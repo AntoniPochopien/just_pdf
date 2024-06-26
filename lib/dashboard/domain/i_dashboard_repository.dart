@@ -1,1 +1,3 @@
-abstract class IDashboardRepository {}
+abstract class IDashboardRepository {
+  Future<void> requestStoragePermission();
+}
