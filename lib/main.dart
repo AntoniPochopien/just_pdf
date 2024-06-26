@@ -1,10 +1,12 @@
 import 'package:flutter/material.dart';
 import 'package:just_pdf/di.dart';
 import 'package:just_pdf/l10n/l10n.dart';
+import 'package:just_pdf/local_storage/domain/i_local_storage_repository.dart';
 import 'package:just_pdf/navigation/app_router.dart';
 
-void main() {
+void main() async {
   diInit();
+  await getIt<ILocalStorageRepository>().init();
   runApp(const JustPdf());
 }
 

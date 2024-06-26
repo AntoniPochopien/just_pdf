@@ -19,32 +19,38 @@ mixin _$DashboardState {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function(List<FileMetadata> lastSeenFiles) data,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
+    TResult? Function(List<FileMetadata> lastSeenFiles)? data,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function(List<FileMetadata> lastSeenFiles)? data,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
+    required TResult Function(_Data value) data,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
+    TResult? Function(_Data value)? data,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
+    TResult Function(_Data value)? data,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -107,6 +113,7 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult when<TResult extends Object?>({
     required TResult Function() initial,
+    required TResult Function(List<FileMetadata> lastSeenFiles) data,
   }) {
     return initial();
   }
@@ -115,6 +122,7 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult? whenOrNull<TResult extends Object?>({
     TResult? Function()? initial,
+    TResult? Function(List<FileMetadata> lastSeenFiles)? data,
   }) {
     return initial?.call();
   }
@@ -123,6 +131,7 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult maybeWhen<TResult extends Object?>({
     TResult Function()? initial,
+    TResult Function(List<FileMetadata> lastSeenFiles)? data,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -135,6 +144,7 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult map<TResult extends Object?>({
     required TResult Function(_Initial value) initial,
+    required TResult Function(_Data value) data,
   }) {
     return initial(this);
   }
@@ -143,6 +153,7 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult? mapOrNull<TResult extends Object?>({
     TResult? Function(_Initial value)? initial,
+    TResult? Function(_Data value)? data,
   }) {
     return initial?.call(this);
   }
@@ -151,6 +162,7 @@ class _$InitialImpl implements _Initial {
   @optionalTypeArgs
   TResult maybeMap<TResult extends Object?>({
     TResult Function(_Initial value)? initial,
+    TResult Function(_Data value)? data,
     required TResult orElse(),
   }) {
     if (initial != null) {
@@ -162,4 +174,144 @@ class _$InitialImpl implements _Initial {
 
 abstract class _Initial implements DashboardState {
   const factory _Initial() = _$InitialImpl;
+}
+
+/// @nodoc
+abstract class _$$DataImplCopyWith<$Res> {
+  factory _$$DataImplCopyWith(
+          _$DataImpl value, $Res Function(_$DataImpl) then) =
+      __$$DataImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<FileMetadata> lastSeenFiles});
+}
+
+/// @nodoc
+class __$$DataImplCopyWithImpl<$Res>
+    extends _$DashboardStateCopyWithImpl<$Res, _$DataImpl>
+    implements _$$DataImplCopyWith<$Res> {
+  __$$DataImplCopyWithImpl(_$DataImpl _value, $Res Function(_$DataImpl) _then)
+      : super(_value, _then);
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? lastSeenFiles = null,
+  }) {
+    return _then(_$DataImpl(
+      null == lastSeenFiles
+          ? _value._lastSeenFiles
+          : lastSeenFiles // ignore: cast_nullable_to_non_nullable
+              as List<FileMetadata>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$DataImpl implements _Data {
+  const _$DataImpl(final List<FileMetadata> lastSeenFiles)
+      : _lastSeenFiles = lastSeenFiles;
+
+  final List<FileMetadata> _lastSeenFiles;
+  @override
+  List<FileMetadata> get lastSeenFiles {
+    if (_lastSeenFiles is EqualUnmodifiableListView) return _lastSeenFiles;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_lastSeenFiles);
+  }
+
+  @override
+  String toString() {
+    return 'DashboardState.data(lastSeenFiles: $lastSeenFiles)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$DataImpl &&
+            const DeepCollectionEquality()
+                .equals(other._lastSeenFiles, _lastSeenFiles));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_lastSeenFiles));
+
+  @JsonKey(ignore: true)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$DataImplCopyWith<_$DataImpl> get copyWith =>
+      __$$DataImplCopyWithImpl<_$DataImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() initial,
+    required TResult Function(List<FileMetadata> lastSeenFiles) data,
+  }) {
+    return data(lastSeenFiles);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? initial,
+    TResult? Function(List<FileMetadata> lastSeenFiles)? data,
+  }) {
+    return data?.call(lastSeenFiles);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? initial,
+    TResult Function(List<FileMetadata> lastSeenFiles)? data,
+    required TResult orElse(),
+  }) {
+    if (data != null) {
+      return data(lastSeenFiles);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Initial value) initial,
+    required TResult Function(_Data value) data,
+  }) {
+    return data(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Initial value)? initial,
+    TResult? Function(_Data value)? data,
+  }) {
+    return data?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Initial value)? initial,
+    TResult Function(_Data value)? data,
+    required TResult orElse(),
+  }) {
+    if (data != null) {
+      return data(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _Data implements DashboardState {
+  const factory _Data(final List<FileMetadata> lastSeenFiles) = _$DataImpl;
+
+  List<FileMetadata> get lastSeenFiles;
+  @JsonKey(ignore: true)
+  _$$DataImplCopyWith<_$DataImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
