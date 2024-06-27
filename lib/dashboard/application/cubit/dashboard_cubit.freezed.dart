@@ -16,43 +16,12 @@ final _privateConstructorUsedError = UnsupportedError(
 
 /// @nodoc
 mixin _$DashboardState {
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function(List<FileMetadata> lastSeenFiles) data,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function(List<FileMetadata> lastSeenFiles)? data,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function(List<FileMetadata> lastSeenFiles)? data,
-    required TResult orElse(),
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Data value) data,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Data value)? data,
-  }) =>
-      throw _privateConstructorUsedError;
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Data value)? data,
-    required TResult orElse(),
-  }) =>
+  bool get isLoading => throw _privateConstructorUsedError;
+  List<FileMetadata> get lastSeenFiles => throw _privateConstructorUsedError;
+  FileMetadata? get openPdf => throw _privateConstructorUsedError;
+
+  @JsonKey(ignore: true)
+  $DashboardStateCopyWith<DashboardState> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -61,6 +30,11 @@ abstract class $DashboardStateCopyWith<$Res> {
   factory $DashboardStateCopyWith(
           DashboardState value, $Res Function(DashboardState) then) =
       _$DashboardStateCopyWithImpl<$Res, DashboardState>;
+  @useResult
+  $Res call(
+      {bool isLoading,
+      List<FileMetadata> lastSeenFiles,
+      FileMetadata? openPdf});
 }
 
 /// @nodoc
@@ -72,148 +46,92 @@ class _$DashboardStateCopyWithImpl<$Res, $Val extends DashboardState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? isLoading = null,
+    Object? lastSeenFiles = null,
+    Object? openPdf = freezed,
+  }) {
+    return _then(_value.copyWith(
+      isLoading: null == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      lastSeenFiles: null == lastSeenFiles
+          ? _value.lastSeenFiles
+          : lastSeenFiles // ignore: cast_nullable_to_non_nullable
+              as List<FileMetadata>,
+      openPdf: freezed == openPdf
+          ? _value.openPdf
+          : openPdf // ignore: cast_nullable_to_non_nullable
+              as FileMetadata?,
+    ) as $Val);
+  }
 }
 
 /// @nodoc
-abstract class _$$InitialImplCopyWith<$Res> {
-  factory _$$InitialImplCopyWith(
-          _$InitialImpl value, $Res Function(_$InitialImpl) then) =
-      __$$InitialImplCopyWithImpl<$Res>;
-}
-
-/// @nodoc
-class __$$InitialImplCopyWithImpl<$Res>
-    extends _$DashboardStateCopyWithImpl<$Res, _$InitialImpl>
-    implements _$$InitialImplCopyWith<$Res> {
-  __$$InitialImplCopyWithImpl(
-      _$InitialImpl _value, $Res Function(_$InitialImpl) _then)
-      : super(_value, _then);
-}
-
-/// @nodoc
-
-class _$InitialImpl implements _Initial {
-  const _$InitialImpl();
-
+abstract class _$$DashboardStateImplCopyWith<$Res>
+    implements $DashboardStateCopyWith<$Res> {
+  factory _$$DashboardStateImplCopyWith(_$DashboardStateImpl value,
+          $Res Function(_$DashboardStateImpl) then) =
+      __$$DashboardStateImplCopyWithImpl<$Res>;
   @override
-  String toString() {
-    return 'DashboardState.initial()';
-  }
-
-  @override
-  bool operator ==(Object other) {
-    return identical(this, other) ||
-        (other.runtimeType == runtimeType && other is _$InitialImpl);
-  }
-
-  @override
-  int get hashCode => runtimeType.hashCode;
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function(List<FileMetadata> lastSeenFiles) data,
-  }) {
-    return initial();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function(List<FileMetadata> lastSeenFiles)? data,
-  }) {
-    return initial?.call();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function(List<FileMetadata> lastSeenFiles)? data,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial();
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Data value) data,
-  }) {
-    return initial(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Data value)? data,
-  }) {
-    return initial?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Data value)? data,
-    required TResult orElse(),
-  }) {
-    if (initial != null) {
-      return initial(this);
-    }
-    return orElse();
-  }
-}
-
-abstract class _Initial implements DashboardState {
-  const factory _Initial() = _$InitialImpl;
-}
-
-/// @nodoc
-abstract class _$$DataImplCopyWith<$Res> {
-  factory _$$DataImplCopyWith(
-          _$DataImpl value, $Res Function(_$DataImpl) then) =
-      __$$DataImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({List<FileMetadata> lastSeenFiles});
+  $Res call(
+      {bool isLoading,
+      List<FileMetadata> lastSeenFiles,
+      FileMetadata? openPdf});
 }
 
 /// @nodoc
-class __$$DataImplCopyWithImpl<$Res>
-    extends _$DashboardStateCopyWithImpl<$Res, _$DataImpl>
-    implements _$$DataImplCopyWith<$Res> {
-  __$$DataImplCopyWithImpl(_$DataImpl _value, $Res Function(_$DataImpl) _then)
+class __$$DashboardStateImplCopyWithImpl<$Res>
+    extends _$DashboardStateCopyWithImpl<$Res, _$DashboardStateImpl>
+    implements _$$DashboardStateImplCopyWith<$Res> {
+  __$$DashboardStateImplCopyWithImpl(
+      _$DashboardStateImpl _value, $Res Function(_$DashboardStateImpl) _then)
       : super(_value, _then);
 
   @pragma('vm:prefer-inline')
   @override
   $Res call({
+    Object? isLoading = null,
     Object? lastSeenFiles = null,
+    Object? openPdf = freezed,
   }) {
-    return _then(_$DataImpl(
-      null == lastSeenFiles
+    return _then(_$DashboardStateImpl(
+      isLoading: null == isLoading
+          ? _value.isLoading
+          : isLoading // ignore: cast_nullable_to_non_nullable
+              as bool,
+      lastSeenFiles: null == lastSeenFiles
           ? _value._lastSeenFiles
           : lastSeenFiles // ignore: cast_nullable_to_non_nullable
               as List<FileMetadata>,
+      openPdf: freezed == openPdf
+          ? _value.openPdf
+          : openPdf // ignore: cast_nullable_to_non_nullable
+              as FileMetadata?,
     ));
   }
 }
 
 /// @nodoc
 
-class _$DataImpl implements _Data {
-  const _$DataImpl(final List<FileMetadata> lastSeenFiles)
+class _$DashboardStateImpl implements _DashboardState {
+  const _$DashboardStateImpl(
+      {this.isLoading = false,
+      final List<FileMetadata> lastSeenFiles = const [],
+      this.openPdf = null})
       : _lastSeenFiles = lastSeenFiles;
 
+  @override
+  @JsonKey()
+  final bool isLoading;
   final List<FileMetadata> _lastSeenFiles;
   @override
+  @JsonKey()
   List<FileMetadata> get lastSeenFiles {
     if (_lastSeenFiles is EqualUnmodifiableListView) return _lastSeenFiles;
     // ignore: implicit_dynamic_type
@@ -221,97 +139,52 @@ class _$DataImpl implements _Data {
   }
 
   @override
+  @JsonKey()
+  final FileMetadata? openPdf;
+
+  @override
   String toString() {
-    return 'DashboardState.data(lastSeenFiles: $lastSeenFiles)';
+    return 'DashboardState(isLoading: $isLoading, lastSeenFiles: $lastSeenFiles, openPdf: $openPdf)';
   }
 
   @override
   bool operator ==(Object other) {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
-            other is _$DataImpl &&
+            other is _$DashboardStateImpl &&
+            (identical(other.isLoading, isLoading) ||
+                other.isLoading == isLoading) &&
             const DeepCollectionEquality()
-                .equals(other._lastSeenFiles, _lastSeenFiles));
+                .equals(other._lastSeenFiles, _lastSeenFiles) &&
+            (identical(other.openPdf, openPdf) || other.openPdf == openPdf));
   }
 
   @override
-  int get hashCode => Object.hash(
-      runtimeType, const DeepCollectionEquality().hash(_lastSeenFiles));
+  int get hashCode => Object.hash(runtimeType, isLoading,
+      const DeepCollectionEquality().hash(_lastSeenFiles), openPdf);
 
   @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
-  _$$DataImplCopyWith<_$DataImpl> get copyWith =>
-      __$$DataImplCopyWithImpl<_$DataImpl>(this, _$identity);
-
-  @override
-  @optionalTypeArgs
-  TResult when<TResult extends Object?>({
-    required TResult Function() initial,
-    required TResult Function(List<FileMetadata> lastSeenFiles) data,
-  }) {
-    return data(lastSeenFiles);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? whenOrNull<TResult extends Object?>({
-    TResult? Function()? initial,
-    TResult? Function(List<FileMetadata> lastSeenFiles)? data,
-  }) {
-    return data?.call(lastSeenFiles);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeWhen<TResult extends Object?>({
-    TResult Function()? initial,
-    TResult Function(List<FileMetadata> lastSeenFiles)? data,
-    required TResult orElse(),
-  }) {
-    if (data != null) {
-      return data(lastSeenFiles);
-    }
-    return orElse();
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult map<TResult extends Object?>({
-    required TResult Function(_Initial value) initial,
-    required TResult Function(_Data value) data,
-  }) {
-    return data(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult? mapOrNull<TResult extends Object?>({
-    TResult? Function(_Initial value)? initial,
-    TResult? Function(_Data value)? data,
-  }) {
-    return data?.call(this);
-  }
-
-  @override
-  @optionalTypeArgs
-  TResult maybeMap<TResult extends Object?>({
-    TResult Function(_Initial value)? initial,
-    TResult Function(_Data value)? data,
-    required TResult orElse(),
-  }) {
-    if (data != null) {
-      return data(this);
-    }
-    return orElse();
-  }
+  _$$DashboardStateImplCopyWith<_$DashboardStateImpl> get copyWith =>
+      __$$DashboardStateImplCopyWithImpl<_$DashboardStateImpl>(
+          this, _$identity);
 }
 
-abstract class _Data implements DashboardState {
-  const factory _Data(final List<FileMetadata> lastSeenFiles) = _$DataImpl;
+abstract class _DashboardState implements DashboardState {
+  const factory _DashboardState(
+      {final bool isLoading,
+      final List<FileMetadata> lastSeenFiles,
+      final FileMetadata? openPdf}) = _$DashboardStateImpl;
 
+  @override
+  bool get isLoading;
+  @override
   List<FileMetadata> get lastSeenFiles;
+  @override
+  FileMetadata? get openPdf;
+  @override
   @JsonKey(ignore: true)
-  _$$DataImplCopyWith<_$DataImpl> get copyWith =>
+  _$$DashboardStateImplCopyWith<_$DashboardStateImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }

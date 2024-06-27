@@ -1,4 +1,3 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:intl/intl.dart';
@@ -7,7 +6,6 @@ import 'package:just_pdf/constants/font.dart';
 import 'package:just_pdf/dashboard/application/cubit/dashboard_cubit.dart';
 import 'package:just_pdf/dashboard/domain/file_metadata.dart';
 import 'package:just_pdf/dashboard/presentation/widgets/context_menu_dialog.dart';
-import 'package:just_pdf/navigation/app_router.dart';
 
 class FilteTile extends StatelessWidget {
   final FileMetadata fileMetadata;
@@ -22,8 +20,7 @@ class FilteTile extends StatelessWidget {
       child: InkWell(
         borderRadius: BorderRadius.circular(Dim.radius),
         onTap: () {
-          context.read<DashboardCubit>().onFileSelected(fileMetadata);
-          context.pushRoute(PdfViewerRoute(fileMetadata: fileMetadata));
+          context.read<DashboardCubit>().onFileTap(fileMetadata);
         },
         onLongPress: () => showDialog(
           context: context,

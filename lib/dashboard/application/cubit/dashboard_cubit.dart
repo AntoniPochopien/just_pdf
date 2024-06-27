@@ -11,16 +11,28 @@ part 'dashboard_state.dart';
 part 'dashboard_cubit.freezed.dart';
 
 class DashboardCubit extends Cubit<DashboardState> {
-  DashboardCubit() : super(const DashboardState.initial());
+  DashboardCubit() : super(const DashboardState(isLoading: true));
   final _dashboardRepository = getIt<IDashboardRepository>();
   final _localStorageRepository = getIt<ILocalStorageRepository>();
   static const _uuid = Uuid();
 
   void init() async {
-    final result = await _dashboardRepository.requestStoragePermission();
-    if (result) {
+    final permissionGranted =
+        await _dashboardRepository.requestStoragePermission();
+    if (permissionGranted) {
+      await _getPdfFromIntent();
       _fetchFiles();
     }
+    emit(state.copyWith(isLoading: false));
+  }
+
+  Future<void> _getPdfFromIntent() async {
+    final result = await _dashboardRepository.getPdfFromIntent();
+    result.fold((l) {}, (r) async {
+      final newFile = r.copyWith(id: _uuid.v1());
+      await _localStorageRepository.saveFile(newFile);
+      emit(state.copyWith(openPdf: newFile));
+    });
   }
 
   void pickPdfFile() async {
@@ -39,22 +51,24 @@ class DashboardCubit extends Cubit<DashboardState> {
     );
 
     await _localStorageRepository.saveFile(fileMetadata);
+    emit(state.copyWith(openPdf: fileMetadata));
     _fetchFiles();
   }
 
-  void deleteFile(FileMetadata fileMetadata)async{
+  void deleteFile(FileMetadata fileMetadata) async {
     await _localStorageRepository.deleteFile(fileMetadata.id);
     _fetchFiles();
   }
 
-  void onFileSelected(FileMetadata fileMetadata) async {
+  void onFileTap(FileMetadata fileMetadata) async {
     await _localStorageRepository.saveFile(fileMetadata);
+    emit(state.copyWith(openPdf: fileMetadata));
     _fetchFiles();
   }
 
   void _fetchFiles() {
     final lastSeenFiles =
         List<FileMetadata>.from(_localStorageRepository.getFiles());
-    emit(DashboardState.data(lastSeenFiles));
+    emit(state.copyWith(lastSeenFiles: lastSeenFiles, openPdf: null));
   }
 }

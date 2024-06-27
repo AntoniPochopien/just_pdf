@@ -15,60 +15,46 @@ class DashboardScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-        create: (context) => DashboardCubit()..init(),
-        child: BlocListener<DashboardCubit, DashboardState>(
-          listenWhen: (previous, current) {
-            final previousData = previous.mapOrNull(data: (value) => value);
-            final currentData = current.mapOrNull(data: (value) => value);
-            if (previousData == null || currentData == null) return false;
-            if (previousData.lastSeenFiles.length <
-                currentData.lastSeenFiles.length) {
-              return true;
-            } else {
-              return false;
-            }
-          },
-          listener: (context, state) {
-            state.mapOrNull(data: (value) {
-              if (value.lastSeenFiles.isNotEmpty) {
-                context.pushRoute(
-                    PdfViewerRoute(fileMetadata: value.lastSeenFiles.first));
-              }
-            });
-          },
-          child: BlocBuilder<DashboardCubit, DashboardState>(
-            builder: (context, state) => Scaffold(
-              appBar: const JustPdfAppBar(),
-              body: state.maybeMap(
-                orElse: () => const Center(child: CircularProgressIndicator()),
-                data: (value) => Padding(
-                  padding: Dim.screenPadding,
-                  child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        Container(
-                            decoration: BoxDecoration(
-                                border: Border.all(),
-                                borderRadius:
-                                    BorderRadius.circular(Dim.radius)),
-                            child:  Padding(
-                                padding: Dim.innerPadding,
-                                child: Text(T(context).recently_viewed))),
-                        Expanded(
-                          child: ListView.builder(
-                              itemCount: value.lastSeenFiles.length,
-                              itemBuilder: (context, index) => FilteTile(
-                                  fileMetadata: value.lastSeenFiles[index])),
-                        )
-                      ]),
-                ),
-              ),
-              floatingActionButton: ElevatedButton(
-                  child: Text(T(context).search_on_your_phone),
-                  onPressed: () =>
-                      context.read<DashboardCubit>().pickPdfFile()),
-            ),
+      create: (context) => DashboardCubit()..init(),
+      child: BlocListener<DashboardCubit, DashboardState>(
+        listenWhen: (previous, current) => previous.openPdf?.id != current.openPdf?.id,
+        listener: (context, state) {
+          if (state.openPdf != null) {
+            context.pushRoute(PdfViewerRoute(fileMetadata: state.openPdf!));
+          }
+        },
+        child: BlocBuilder<DashboardCubit, DashboardState>(
+          builder: (context, state) => Scaffold(
+            appBar: const JustPdfAppBar(),
+            body: state.isLoading
+                ? const Center(child: CircularProgressIndicator())
+                : Padding(
+                    padding: Dim.screenPadding,
+                    child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Container(
+                              decoration: BoxDecoration(
+                                  border: Border.all(),
+                                  borderRadius:
+                                      BorderRadius.circular(Dim.radius)),
+                              child: Padding(
+                                  padding: Dim.innerPadding,
+                                  child: Text(T(context).recently_viewed))),
+                          Expanded(
+                            child: ListView.builder(
+                                itemCount: state.lastSeenFiles.length,
+                                itemBuilder: (context, index) => FilteTile(
+                                    fileMetadata: state.lastSeenFiles[index])),
+                          )
+                        ]),
+                  ),
+            floatingActionButton: ElevatedButton(
+                child: Text(T(context).search_on_your_phone),
+                onPressed: () => context.read<DashboardCubit>().pickPdfFile()),
           ),
-        ));
+        ),
+      ),
+    );
   }
 }
