@@ -6,12 +6,13 @@ import 'package:just_pdf/constants/font.dart';
 import 'package:just_pdf/dashboard/application/cubit/dashboard_cubit.dart';
 import 'package:just_pdf/dashboard/domain/file_metadata.dart';
 import 'package:just_pdf/dashboard/presentation/widgets/context_menu_dialog.dart';
+import 'package:just_pdf/l10n/l10n.dart';
 
 class FilteTile extends StatelessWidget {
   final FileMetadata fileMetadata;
   const FilteTile({super.key, required this.fileMetadata});
 
-  static final _dateFormat = DateFormat('dd-MM-yyyy hh:mm');
+  static final _dateFormat = DateFormat('dd-MM-yyyy HH:mm');
 
   @override
   Widget build(BuildContext context) {
@@ -24,7 +25,8 @@ class FilteTile extends StatelessWidget {
         },
         onLongPress: () => showDialog(
           context: context,
-          builder: (ctx) => ContextMenuDialog(ctx: context,fileMetadata: fileMetadata),
+          builder: (ctx) =>
+              ContextMenuDialog(ctx: context, fileMetadata: fileMetadata),
         ),
         child: Padding(
           padding: const EdgeInsets.all(8.0),
@@ -53,7 +55,7 @@ class FilteTile extends StatelessWidget {
                           Flexible(
                             child: FittedBox(
                               child: Text(
-                                'Ostatnio widziane:\n${_dateFormat.format(fileMetadata.lastViewed)}',
+                                '${T(context).last_seen}:\n${_dateFormat.format(fileMetadata.lastViewed)}',
                                 textAlign: TextAlign.end,
                                 style: Font.h5Dark.copyWith(
                                     color: Colors.black.withOpacity(0.6)),
