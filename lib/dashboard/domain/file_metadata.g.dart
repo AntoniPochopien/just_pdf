@@ -17,21 +17,24 @@ class FileMetadataAdapter extends TypeAdapter<FileMetadata> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return FileMetadata(
-      filePath: fields[0] as String,
-      lastViewed: fields[1] as DateTime,
-      sizeInBytes: fields[2] as int,
+      id: fields[0] as String,
+      filePath: fields[1] as String,
+      lastViewed: fields[2] as DateTime,
+      sizeInBytes: fields[3] as int,
     );
   }
 
   @override
   void write(BinaryWriter writer, FileMetadata obj) {
     writer
-      ..writeByte(3)
+      ..writeByte(4)
       ..writeByte(0)
-      ..write(obj.filePath)
+      ..write(obj.id)
       ..writeByte(1)
-      ..write(obj.lastViewed)
+      ..write(obj.filePath)
       ..writeByte(2)
+      ..write(obj.lastViewed)
+      ..writeByte(3)
       ..write(obj.sizeInBytes);
   }
 

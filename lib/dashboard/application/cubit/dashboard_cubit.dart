@@ -5,6 +5,7 @@ import 'package:just_pdf/dashboard/domain/i_dashboard_repository.dart';
 import 'package:just_pdf/di.dart';
 import 'package:just_pdf/local_storage/domain/i_local_storage_repository.dart';
 import 'package:file_picker/file_picker.dart';
+import 'package:uuid/uuid.dart';
 
 part 'dashboard_state.dart';
 part 'dashboard_cubit.freezed.dart';
@@ -13,6 +14,8 @@ class DashboardCubit extends Cubit<DashboardState> {
   DashboardCubit() : super(const DashboardState.initial());
   final _dashboardRepository = getIt<IDashboardRepository>();
   final _localStorageRepository = getIt<ILocalStorageRepository>();
+  static const  _uuid =  Uuid();
+
 
   void init() async {
     await _dashboardRepository.requestStoragePermission();
@@ -28,11 +31,17 @@ class DashboardCubit extends Cubit<DashboardState> {
     final file = result.files.single;
 
     final fileMetadata = FileMetadata(
+      id: _uuid.v1(),
       filePath: file.path!,
       sizeInBytes: file.size,
       lastViewed: DateTime.now(),
     );
 
+    await _localStorageRepository.saveNewFilePath(fileMetadata);
+    _fetchFiles();
+  }
+
+  void onFileSelected(FileMetadata fileMetadata)async{
     await _localStorageRepository.saveNewFilePath(fileMetadata);
     _fetchFiles();
   }
