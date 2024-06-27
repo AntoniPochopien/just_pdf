@@ -5,6 +5,7 @@ import 'package:just_pdf/common/widgets/just_pdf_app_bar.dart';
 import 'package:just_pdf/constants/dim.dart';
 import 'package:just_pdf/dashboard/application/cubit/dashboard_cubit.dart';
 import 'package:just_pdf/dashboard/presentation/widgets/file_tile.dart';
+import 'package:just_pdf/l10n/l10n.dart';
 import 'package:just_pdf/navigation/app_router.dart';
 
 @RoutePage()
@@ -20,7 +21,7 @@ class DashboardScreen extends StatelessWidget {
             final previousData = previous.mapOrNull(data: (value) => value);
             final currentData = current.mapOrNull(data: (value) => value);
             if (previousData == null || currentData == null) return false;
-            if (previousData.lastSeenFiles.length !=
+            if (previousData.lastSeenFiles.length <
                 currentData.lastSeenFiles.length) {
               return true;
             } else {
@@ -50,9 +51,9 @@ class DashboardScreen extends StatelessWidget {
                                 border: Border.all(),
                                 borderRadius:
                                     BorderRadius.circular(Dim.radius)),
-                            child: const Padding(
+                            child:  Padding(
                                 padding: Dim.innerPadding,
-                                child: Text('Ostatnio przeglądane'))),
+                                child: Text(T(context).recently_viewed))),
                         Expanded(
                           child: ListView.builder(
                               itemCount: value.lastSeenFiles.length,
@@ -63,7 +64,7 @@ class DashboardScreen extends StatelessWidget {
                 ),
               ),
               floatingActionButton: ElevatedButton(
-                  child: Text('Szukaj w telefonie'),
+                  child: Text(T(context).search_on_your_phone),
                   onPressed: () =>
                       context.read<DashboardCubit>().pickPdfFile()),
             ),

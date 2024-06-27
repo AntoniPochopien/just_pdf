@@ -1,5 +1,3 @@
-import 'dart:io';
-
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:just_pdf/dashboard/domain/file_metadata.dart';
@@ -40,28 +38,23 @@ class DashboardCubit extends Cubit<DashboardState> {
       lastViewed: DateTime.now(),
     );
 
-    await _localStorageRepository.saveNewFilePath(fileMetadata);
+    await _localStorageRepository.saveFile(fileMetadata);
+    _fetchFiles();
+  }
+
+  void deleteFile(FileMetadata fileMetadata)async{
+    await _localStorageRepository.deleteFile(fileMetadata.id);
     _fetchFiles();
   }
 
   void onFileSelected(FileMetadata fileMetadata) async {
-    await _localStorageRepository.saveNewFilePath(fileMetadata);
+    await _localStorageRepository.saveFile(fileMetadata);
     _fetchFiles();
-  }
-
-  void renameFile(
-      {required FileMetadata fileMetadata, required String newFileName}) async {
-    //TODO move that logic to dashboard repository
-    final file = File(fileMetadata.filePath);
-    final path = file.path;
-    final lastSeparator = path.lastIndexOf(Platform.pathSeparator);
-    final newPath = path.substring(0, lastSeparator + 1) + newFileName;
-    await file.rename(newPath);
   }
 
   void _fetchFiles() {
     final lastSeenFiles =
-        List<FileMetadata>.from(_localStorageRepository.getLastSeenFiles());
+        List<FileMetadata>.from(_localStorageRepository.getFiles());
     emit(DashboardState.data(lastSeenFiles));
   }
 }

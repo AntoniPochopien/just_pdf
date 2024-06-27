@@ -1,3 +1,9 @@
 {
-    "app_name":"JustPDF"
+    "app_name":"JustPDF",
+    "search_on_your_phone":"Szukaj w telefonie",
+    "recently_viewed":"Ostatnio przeglądane",
+    "last_seen":"Ostatnio widziane",
+    "name":"Nazwa",
+    "size":"Rozmiar",
+    "delete":"Usuń"
 }

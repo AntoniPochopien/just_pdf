@@ -13,8 +13,8 @@ class LocalStorageRepository implements ILocalStorageRepository {
   }
 
   @override
-  Future<void> saveNewFilePath(FileMetadata fileMetadata) async {
-    final lastSeenFiles = getLastSeenFiles();
+  Future<void> saveFile(FileMetadata fileMetadata) async {
+    final lastSeenFiles = getFiles();
     final existingFileIndex = lastSeenFiles.indexWhere((file) =>
         file.id == fileMetadata.id || (file.getName == fileMetadata.getName && file.sizeInBytes == fileMetadata.sizeInBytes));
 
@@ -35,8 +35,15 @@ class LocalStorageRepository implements ILocalStorageRepository {
   }
 
   @override
-  List<FileMetadata> getLastSeenFiles() {
+  List<FileMetadata> getFiles() {
     final List<dynamic>? files = box.get('files');
     return files == null ? [] : files.cast<FileMetadata>();
+  }
+  
+  @override
+  Future<void> deleteFile(String id)async {
+    final files = getFiles();
+    files.removeWhere((element) => element.id == id);
+    await box.put('files', files);
   }
 }

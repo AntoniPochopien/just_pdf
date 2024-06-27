@@ -6,6 +6,7 @@ import 'package:just_pdf/constants/dim.dart';
 import 'package:just_pdf/constants/font.dart';
 import 'package:just_pdf/dashboard/application/cubit/dashboard_cubit.dart';
 import 'package:just_pdf/dashboard/domain/file_metadata.dart';
+import 'package:just_pdf/dashboard/presentation/widgets/context_menu_dialog.dart';
 import 'package:just_pdf/navigation/app_router.dart';
 
 class FilteTile extends StatelessWidget {
@@ -19,10 +20,15 @@ class FilteTile extends StatelessWidget {
     return Padding(
       padding: Dim.verticalPadding,
       child: InkWell(
+        borderRadius: BorderRadius.circular(Dim.radius),
         onTap: () {
           context.read<DashboardCubit>().onFileSelected(fileMetadata);
           context.pushRoute(PdfViewerRoute(fileMetadata: fileMetadata));
         },
+        onLongPress: () => showDialog(
+          context: context,
+          builder: (ctx) => ContextMenuDialog(ctx: context,fileMetadata: fileMetadata),
+        ),
         child: Padding(
           padding: const EdgeInsets.all(8.0),
           child: Row(children: [
