@@ -1,9 +1,9 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:just_pdf/common/widgets/just_pdf_app_bar.dart';
 import 'package:just_pdf/dashboard/application/cubit/dashboard_cubit.dart';
-import 'package:just_pdf/l10n/l10n.dart';
-import 'package:just_pdf/navigation/app_router.dart';
+import 'package:just_pdf/dashboard/presentation/widgets/file_tile.dart';
 
 @RoutePage()
 class DashboardScreen extends StatelessWidget {
@@ -15,15 +15,12 @@ class DashboardScreen extends StatelessWidget {
         create: (context) => DashboardCubit()..init(),
         child: BlocBuilder<DashboardCubit, DashboardState>(
           builder: (context, state) => Scaffold(
-            appBar: AppBar(title: Text(T(context).app_name)),
+            appBar: const JustPdfAppBar(),
             body: state.maybeMap(
               orElse: () => const Center(child: CircularProgressIndicator()),
               data: (value) => ListView.builder(
                 itemCount: value.lastSeenFiles.length,
-                itemBuilder: (context, index) => GestureDetector(
-                    onTap: () => context.pushRoute(PdfViewerRoute(
-                        fileMetadata: value.lastSeenFiles[index])),
-                    child: Text(value.lastSeenFiles[index].filePath)),
+                itemBuilder: (context, index) => FilteTile(fileMetadata: value.lastSeenFiles[index])
               ),
             ),
             floatingActionButton: ElevatedButton(

@@ -25,15 +25,20 @@ class DashboardCubit extends Cubit<DashboardState> {
 
     if (result == null) return;
 
-    final fileMetadata = FileMetadata(
-        filePath: result.files.single.path!, lastViewed: DateTime.now());
+    final file = result.files.single;
 
-    _localStorageRepository.saveNewFilePath(fileMetadata);
+    final fileMetadata = FileMetadata(
+      filePath: file.path!,
+      sizeInBytes: file.size,
+      lastViewed: DateTime.now(),
+    );
+
+    await _localStorageRepository.saveNewFilePath(fileMetadata);
     _fetchFiles();
   }
 
   void _fetchFiles() {
-    final lastSeenFiles = _localStorageRepository.getLastSeenFiles();
+    final lastSeenFiles = List<FileMetadata>.from(_localStorageRepository.getLastSeenFiles());
     emit(DashboardState.data(lastSeenFiles));
   }
 }

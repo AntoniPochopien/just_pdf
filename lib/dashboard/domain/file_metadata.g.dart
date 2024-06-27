@@ -19,17 +19,20 @@ class FileMetadataAdapter extends TypeAdapter<FileMetadata> {
     return FileMetadata(
       filePath: fields[0] as String,
       lastViewed: fields[1] as DateTime,
+      sizeInBytes: fields[2] as int,
     );
   }
 
   @override
   void write(BinaryWriter writer, FileMetadata obj) {
     writer
-      ..writeByte(2)
+      ..writeByte(3)
       ..writeByte(0)
       ..write(obj.filePath)
       ..writeByte(1)
-      ..write(obj.lastViewed);
+      ..write(obj.lastViewed)
+      ..writeByte(2)
+      ..write(obj.sizeInBytes);
   }
 
   @override

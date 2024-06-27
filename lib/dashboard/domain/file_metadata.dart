@@ -8,6 +8,12 @@ class FileMetadata {
   final String filePath;
   @HiveField(1)
   final DateTime lastViewed;
+  @HiveField(2)
+  final int sizeInBytes;
 
-  const FileMetadata({required this.filePath, required this.lastViewed});
+  const FileMetadata({required this.filePath, required this.lastViewed, required this.sizeInBytes});
+
+  String get getName => filePath.split('/').last;
+
+  double get getSize => sizeInBytes / (1024 * 1024);
 }

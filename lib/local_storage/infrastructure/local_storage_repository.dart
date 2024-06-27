@@ -13,12 +13,12 @@ class LocalStorageRepository implements ILocalStorageRepository {
   }
 
   @override
-  void saveNewFilePath(FileMetadata fileMetadata) {
+  Future<void> saveNewFilePath(FileMetadata fileMetadata) async {
     final lastSeenFiles = getLastSeenFiles();
     lastSeenFiles.add(fileMetadata);
     lastSeenFiles.sort((a, b) => b.lastViewed.compareTo(a.lastViewed));
     final limitedList = lastSeenFiles.take(20).toList();
-    box.put('files', limitedList);
+    await box.put('files', limitedList);
   }
 
   @override
