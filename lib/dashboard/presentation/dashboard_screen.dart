@@ -5,7 +5,7 @@ import 'package:just_pdf/common/widgets/just_pdf_app_bar.dart';
 import 'package:just_pdf/constants/dim.dart';
 import 'package:just_pdf/dashboard/application/cubit/dashboard_cubit.dart';
 import 'package:just_pdf/dashboard/presentation/widgets/file_tile.dart';
-import 'package:just_pdf/l10n/application/cubit/language_cubit.dart';
+import 'package:just_pdf/dashboard/presentation/widgets/language_change_button.dart';
 import 'package:just_pdf/l10n/l10n.dart';
 import 'package:just_pdf/navigation/app_router.dart';
 
@@ -27,18 +27,7 @@ class DashboardScreen extends StatelessWidget {
         },
         child: BlocBuilder<DashboardCubit, DashboardState>(
           builder: (context, state) => Scaffold(
-            appBar: JustPdfAppBar(actions: [
-              PopupMenuButton(
-                child: const Icon(Icons.language),
-                itemBuilder: (context) => L10n.supported
-                    .map((e) => PopupMenuItem(
-                        value: e,
-                        child: Text(L10n.getNativeLangName(e.languageCode))))
-                    .toList(),
-                onSelected: (value) =>
-                    context.read<LanguageCubit>().setLocale(locale: value),
-              )
-            ]),
+            appBar: const JustPdfAppBar(actions: [LanguageChangeButton()]),
             body: state.isLoading
                 ? const Center(child: CircularProgressIndicator())
                 : Padding(
