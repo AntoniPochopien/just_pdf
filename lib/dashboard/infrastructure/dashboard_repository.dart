@@ -3,10 +3,11 @@ import 'package:permission_handler/permission_handler.dart';
 
 class DashboardRepository implements IDashboardRepository {
   @override
-  Future<void> requestStoragePermission() async {
+  Future<bool> requestStoragePermission() async {
     final status = await Permission.manageExternalStorage.status;
     if (!status.isGranted) {
       await Permission.manageExternalStorage.request();
     }
+    return status.isGranted;
   }
 }

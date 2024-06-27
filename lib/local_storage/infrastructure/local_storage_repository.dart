@@ -15,10 +15,11 @@ class LocalStorageRepository implements ILocalStorageRepository {
   @override
   Future<void> saveNewFilePath(FileMetadata fileMetadata) async {
     final lastSeenFiles = getLastSeenFiles();
-    final existingFileIndex = lastSeenFiles.indexWhere(
-        (file) => file.id == fileMetadata.id);
+    final existingFileIndex = lastSeenFiles.indexWhere((file) =>
+        file.id == fileMetadata.id || file.filePath == fileMetadata.filePath);
     if (existingFileIndex != -1) {
-      final existingFile = lastSeenFiles[existingFileIndex].copyWith(lastViewed: DateTime.now());
+      final existingFile =
+          lastSeenFiles[existingFileIndex].copyWith(lastViewed: DateTime.now());
       lastSeenFiles[existingFileIndex] = existingFile;
     } else {
       final newFileMetadata = fileMetadata.copyWith(lastViewed: DateTime.now());

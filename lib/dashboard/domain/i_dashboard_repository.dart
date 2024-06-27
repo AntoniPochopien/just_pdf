@@ -1,3 +1,3 @@
 abstract class IDashboardRepository {
-  Future<void> requestStoragePermission();
+  Future<bool> requestStoragePermission();
 }
