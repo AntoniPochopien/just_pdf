@@ -7,7 +7,7 @@ import 'package:just_pdf/pdf_viewer/pdf_viewer_screen.dart';
 part 'app_router.gr.dart';
 
 @AutoRouterConfig(replaceInRouteName: 'Screen,Route')
-class AppRouter extends _$AppRouter {
+class AppRouter extends RootStackRouter {
   @override
   List<AutoRoute> get routes => [
         AutoRoute(page: DashboardRoute.page, initial: true),

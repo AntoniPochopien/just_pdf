@@ -18,7 +18,9 @@ class JustPdf extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => LanguageCubit()..init(),
+      create: (context) => LanguageCubit(
+        localStorageRepository: getIt<ILocalStorageRepository>(),
+      )..init(),
       child: BlocBuilder<LanguageCubit, LanguageState>(
         builder: (context, languageState) => MaterialApp.router(
           routerConfig: getIt<AppRouter>().config(),

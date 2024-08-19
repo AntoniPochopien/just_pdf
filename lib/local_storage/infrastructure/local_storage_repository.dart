@@ -16,24 +16,22 @@ class LocalStorageRepository implements ILocalStorageRepository {
 
   @override
   Future<void> saveFile(FileMetadata fileMetadata) async {
-    final lastSeenFiles = getFiles();
-    final existingFileIndex = lastSeenFiles.indexWhere((file) =>
+    final allFiles = getFiles();
+    final existingFileIndex = allFiles.indexWhere((file) =>
         file.id == fileMetadata.id ||
         (file.getName == fileMetadata.getName &&
             file.sizeInBytes == fileMetadata.sizeInBytes));
 
     if (existingFileIndex != -1) {
       final existingFile =
-          lastSeenFiles[existingFileIndex].copyWith(lastViewed: DateTime.now());
-      lastSeenFiles[existingFileIndex] = existingFile;
+          allFiles[existingFileIndex].copyWith(lastViewed: DateTime.now());
+      allFiles[existingFileIndex] = existingFile;
     } else {
       final newFileMetadata = fileMetadata.copyWith(lastViewed: DateTime.now());
-      lastSeenFiles.add(newFileMetadata);
+      allFiles.add(newFileMetadata);
     }
 
-    lastSeenFiles.sort((a, b) => b.lastViewed.compareTo(a.lastViewed));
-
-    final limitedList = lastSeenFiles.take(20).toList();
+    final limitedList = allFiles.take(100).toList();
 
     await box.put('files', limitedList);
   }

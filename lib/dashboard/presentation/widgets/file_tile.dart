@@ -8,9 +8,9 @@ import 'package:just_pdf/dashboard/domain/file_metadata.dart';
 import 'package:just_pdf/dashboard/presentation/widgets/context_menu_dialog.dart';
 import 'package:just_pdf/l10n/l10n.dart';
 
-class FilteTile extends StatelessWidget {
+class FileTile extends StatelessWidget {
   final FileMetadata fileMetadata;
-  const FilteTile({super.key, required this.fileMetadata});
+  const FileTile({super.key, required this.fileMetadata});
 
   static final _dateFormat = DateFormat('dd-MM-yyyy HH:mm');
 

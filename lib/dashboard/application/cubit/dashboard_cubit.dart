@@ -2,7 +2,6 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:just_pdf/dashboard/domain/file_metadata.dart';
 import 'package:just_pdf/dashboard/domain/i_dashboard_repository.dart';
-import 'package:just_pdf/di.dart';
 import 'package:just_pdf/local_storage/domain/i_local_storage_repository.dart';
 import 'package:file_picker/file_picker.dart';
 import 'package:uuid/uuid.dart';
@@ -11,27 +10,29 @@ part 'dashboard_state.dart';
 part 'dashboard_cubit.freezed.dart';
 
 class DashboardCubit extends Cubit<DashboardState> {
-  DashboardCubit() : super(const DashboardState(isLoading: true));
-  final _dashboardRepository = getIt<IDashboardRepository>();
-  final _localStorageRepository = getIt<ILocalStorageRepository>();
+  final IDashboardRepository dashboardRepository;
+  final ILocalStorageRepository localStorageRepository;
+  DashboardCubit({
+    required this.dashboardRepository,
+    required this.localStorageRepository
+  }) : super(const DashboardState.loading());
   static const _uuid = Uuid();
 
   void init() async {
     final permissionGranted =
-        await _dashboardRepository.requestStoragePermission();
+        await dashboardRepository.requestStoragePermission();
     if (permissionGranted) {
       await _getPdfFromIntent();
-      _fetchFiles();
+      fetchLastSeenFiles();
     }
-    emit(state.copyWith(isLoading: false));
   }
 
   Future<void> _getPdfFromIntent() async {
-    final result = await _dashboardRepository.getPdfFromIntent();
+    final result = await dashboardRepository.getPdfFromIntent();
     result.fold((l) {}, (r) async {
       final newFile = r.copyWith(id: _uuid.v1());
-      await _localStorageRepository.saveFile(newFile);
-      emit(state.copyWith(openPdf: newFile));
+      await localStorageRepository.saveFile(newFile);
+      emit(DashboardState.openPdf(newFile));
     });
   }
 
@@ -50,25 +51,41 @@ class DashboardCubit extends Cubit<DashboardState> {
       lastViewed: DateTime.now(),
     );
 
-    await _localStorageRepository.saveFile(fileMetadata);
-    emit(state.copyWith(openPdf: fileMetadata));
-    _fetchFiles();
+    await localStorageRepository.saveFile(fileMetadata);
+    emit(DashboardState.openPdf(fileMetadata));
   }
 
   void deleteFile(FileMetadata fileMetadata) async {
-    await _localStorageRepository.deleteFile(fileMetadata.id);
-    _fetchFiles();
+    await localStorageRepository.deleteFile(fileMetadata.id);
+    state.whenOrNull(
+      lastSeenFiles: (_) => fetchLastSeenFiles(),
+      alphabeticalOrderFiles: (_) => alphabeticalOrderFiles(),
+    );
   }
 
   void onFileTap(FileMetadata fileMetadata) async {
-    await _localStorageRepository.saveFile(fileMetadata);
-    emit(state.copyWith(openPdf: fileMetadata));
-    _fetchFiles();
+    await localStorageRepository.saveFile(fileMetadata);
+    emit(DashboardState.openPdf(fileMetadata));
   }
 
-  void _fetchFiles() {
-    final lastSeenFiles =
-        List<FileMetadata>.from(_localStorageRepository.getFiles());
-    emit(state.copyWith(lastSeenFiles: lastSeenFiles, openPdf: null));
+  void fetchLastSeenFiles() {
+    final allFiles =
+        List<FileMetadata>.from(localStorageRepository.getFiles());
+
+    //sort: newest on the top
+    allFiles.sort((a, b) => b.lastViewed.compareTo(a.lastViewed));
+    
+    emit(DashboardState.lastSeenFiles(lastSeenFiles: allFiles));
+  }
+
+    void alphabeticalOrderFiles() {
+    final allFiles =
+        List<FileMetadata>.from(localStorageRepository.getFiles());
+    
+    //sort: alphabetical order a-z
+
+    allFiles.sort((a, b) => a.getName.compareTo(b.getName));
+      
+    emit(DashboardState.alphabeticalOrderFiles(alphabeticalFiles: allFiles));
   }
 }

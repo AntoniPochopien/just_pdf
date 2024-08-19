@@ -9,31 +9,6 @@
 
 part of 'app_router.dart';
 
-abstract class _$AppRouter extends RootStackRouter {
-  // ignore: unused_element
-  _$AppRouter({super.navigatorKey});
-
-  @override
-  final Map<String, PageFactory> pagesMap = {
-    DashboardRoute.name: (routeData) {
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const DashboardScreen(),
-      );
-    },
-    PdfViewerRoute.name: (routeData) {
-      final args = routeData.argsAs<PdfViewerRouteArgs>();
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: PdfViewerScreen(
-          key: args.key,
-          fileMetadata: args.fileMetadata,
-        ),
-      );
-    },
-  };
-}
-
 /// generated route for
 /// [DashboardScreen]
 class DashboardRoute extends PageRouteInfo<void> {
@@ -45,7 +20,12 @@ class DashboardRoute extends PageRouteInfo<void> {
 
   static const String name = 'DashboardRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const DashboardScreen();
+    },
+  );
 }
 
 /// generated route for
@@ -66,8 +46,16 @@ class PdfViewerRoute extends PageRouteInfo<PdfViewerRouteArgs> {
 
   static const String name = 'PdfViewerRoute';
 
-  static const PageInfo<PdfViewerRouteArgs> page =
-      PageInfo<PdfViewerRouteArgs>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<PdfViewerRouteArgs>();
+      return PdfViewerScreen(
+        key: args.key,
+        fileMetadata: args.fileMetadata,
+      );
+    },
+  );
 }
 
 class PdfViewerRouteArgs {

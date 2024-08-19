@@ -2,11 +2,14 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:just_pdf/common/widgets/just_pdf_app_bar.dart';
-import 'package:just_pdf/constants/dim.dart';
 import 'package:just_pdf/dashboard/application/cubit/dashboard_cubit.dart';
-import 'package:just_pdf/dashboard/presentation/widgets/file_tile.dart';
+import 'package:just_pdf/dashboard/domain/i_dashboard_repository.dart';
+import 'package:just_pdf/dashboard/presentation/widgets/files_list_view.dart';
 import 'package:just_pdf/dashboard/presentation/widgets/language_change_button.dart';
+import 'package:just_pdf/dashboard/presentation/widgets/option_pill.dart';
+import 'package:just_pdf/di.dart';
 import 'package:just_pdf/l10n/l10n.dart';
+import 'package:just_pdf/local_storage/domain/i_local_storage_repository.dart';
 import 'package:just_pdf/navigation/app_router.dart';
 
 @RoutePage()
@@ -16,41 +19,54 @@ class DashboardScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (context) => DashboardCubit()..init(),
+      create: (context) => DashboardCubit(
+        dashboardRepository: getIt<IDashboardRepository>(),
+        localStorageRepository: getIt<ILocalStorageRepository>(),
+      )..init(),
       child: BlocListener<DashboardCubit, DashboardState>(
-        listenWhen: (previous, current) =>
-            previous.openPdf?.id != current.openPdf?.id,
         listener: (context, state) {
-          if (state.openPdf != null) {
-            context.pushRoute(PdfViewerRoute(fileMetadata: state.openPdf!));
-          }
+          state.whenOrNull(
+              openPdf: (openPdf) =>
+                  context.pushRoute(PdfViewerRoute(fileMetadata: openPdf)));
         },
         child: BlocBuilder<DashboardCubit, DashboardState>(
           builder: (context, state) => Scaffold(
             appBar: const JustPdfAppBar(actions: [LanguageChangeButton()]),
-            body: state.isLoading
-                ? const Center(child: CircularProgressIndicator())
-                : Padding(
-                    padding: Dim.screenPadding,
-                    child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        children: [
-                          Container(
-                              decoration: BoxDecoration(
-                                  border: Border.all(),
-                                  borderRadius:
-                                      BorderRadius.circular(Dim.radius)),
-                              child: Padding(
-                                  padding: Dim.innerPadding,
-                                  child: Text(T(context).recently_viewed))),
-                          Expanded(
-                            child: ListView.builder(
-                                itemCount: state.lastSeenFiles.length,
-                                itemBuilder: (context, index) => FilteTile(
-                                    fileMetadata: state.lastSeenFiles[index])),
-                          )
-                        ]),
+            body: state.maybeWhen(
+              loading: () => const Center(child: CircularProgressIndicator()),
+              orElse: () => Column(
+                children: [
+                  SingleChildScrollView(
+                    child: Row(
+                      children: [
+                        OptionPill(
+                          onTap: () => context.read<DashboardCubit>().fetchLastSeenFiles(),
+                            selected: state.maybeWhen(
+                              lastSeenFiles: (lastSeenFiles) => true,
+                              orElse: () => false,
+                            ),
+                            text: T(context).recently_viewed),
+                        OptionPill(
+                          onTap: () => context.read<DashboardCubit>().alphabeticalOrderFiles(),
+                            selected: state.maybeWhen(
+                              alphabeticalOrderFiles: (alphabeticalFiles) =>
+                                  true,
+                              orElse: () => false,
+                            ),
+                            text: T(context).a_z)
+                      ],
+                    ),
                   ),
+                  state.maybeWhen(
+                    lastSeenFiles: (lastSeenFiles) =>
+                        FilesListView(files: lastSeenFiles),
+                    alphabeticalOrderFiles: (alphabeticalFiles) =>
+                        FilesListView(files: alphabeticalFiles),
+                    orElse: () => const SizedBox(),
+                  )
+                ],
+              ),
+            ),
             floatingActionButton: ElevatedButton(
                 child: Text(T(context).search_on_your_phone),
                 onPressed: () => context.read<DashboardCubit>().pickPdfFile()),
