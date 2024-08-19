@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:just_pdf/dashboard/domain/file_metadata.dart';
+import 'package:just_pdf/dashboard/domain/options.dart';
 import 'package:just_pdf/local_storage/domain/i_local_storage_repository.dart';
 import 'package:hive_flutter/adapters.dart';
 
@@ -11,6 +12,7 @@ class LocalStorageRepository implements ILocalStorageRepository {
   Future<void> init() async {
     await Hive.initFlutter();
     Hive.registerAdapter(FileMetadataAdapter());
+    Hive.registerAdapter(OptionsAdapter());
     box = await Hive.openBox('JustPDF');
   }
 
@@ -62,4 +64,10 @@ class LocalStorageRepository implements ILocalStorageRepository {
   @override
   Future<void> saveLocale(Locale? locale) =>
       box.put('locale', locale?.languageCode);
+
+  @override
+  Options? getLastOption() => box.get('option');
+
+  @override
+  Future<void> saveLastOption(Options option) => box.put('option', option);
 }

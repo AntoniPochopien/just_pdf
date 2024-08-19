@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:just_pdf/dashboard/domain/file_metadata.dart';
+import 'package:just_pdf/dashboard/domain/options.dart';
 
 abstract class ILocalStorageRepository {
   Future<void> init();
@@ -8,4 +9,6 @@ abstract class ILocalStorageRepository {
   List<FileMetadata> getFiles();
   Locale? readLocale();
   Future<void> saveLocale(Locale? locale);
+  Future<void> saveLastOption(Options option);
+  Options? getLastOption();
 }
