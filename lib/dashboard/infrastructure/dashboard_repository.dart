@@ -19,6 +19,10 @@ class DashboardRepository implements IDashboardRepository {
   }
 
   @override
+  Future<bool> checkStoragePermission() async =>
+      await Permission.manageExternalStorage.status.isGranted;
+
+  @override
   Future<Either<Failure, FileMetadata>> getPdfFromIntent() async {
     try {
       final result =

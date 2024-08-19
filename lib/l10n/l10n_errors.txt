@@ -1,1 +1,5 @@
-{}
+{
+  "pl": [
+    "no_access_to_external_memory"
+  ]
+}

@@ -24,6 +24,7 @@ mixin _$DashboardState {
         alphabeticalOrderFiles,
     required TResult Function(FileMetadata file, DashboardState? previousState)
         openPdf,
+    required TResult Function() notPermitted,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -34,6 +35,7 @@ mixin _$DashboardState {
         alphabeticalOrderFiles,
     TResult? Function(FileMetadata file, DashboardState? previousState)?
         openPdf,
+    TResult? Function()? notPermitted,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -43,6 +45,7 @@ mixin _$DashboardState {
     TResult Function(List<FileMetadata> alphabeticalFiles)?
         alphabeticalOrderFiles,
     TResult Function(FileMetadata file, DashboardState? previousState)? openPdf,
+    TResult Function()? notPermitted,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -53,6 +56,7 @@ mixin _$DashboardState {
     required TResult Function(_AlphabeticalOrderFiles value)
         alphabeticalOrderFiles,
     required TResult Function(_OpenPdf value) openPdf,
+    required TResult Function(_NotPermitted value) notPermitted,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -61,6 +65,7 @@ mixin _$DashboardState {
     TResult? Function(_LastSeenFiles value)? lastSeenFiles,
     TResult? Function(_AlphabeticalOrderFiles value)? alphabeticalOrderFiles,
     TResult? Function(_OpenPdf value)? openPdf,
+    TResult? Function(_NotPermitted value)? notPermitted,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -69,6 +74,7 @@ mixin _$DashboardState {
     TResult Function(_LastSeenFiles value)? lastSeenFiles,
     TResult Function(_AlphabeticalOrderFiles value)? alphabeticalOrderFiles,
     TResult Function(_OpenPdf value)? openPdf,
+    TResult Function(_NotPermitted value)? notPermitted,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -136,6 +142,7 @@ class _$LoadingImpl implements _Loading {
         alphabeticalOrderFiles,
     required TResult Function(FileMetadata file, DashboardState? previousState)
         openPdf,
+    required TResult Function() notPermitted,
   }) {
     return loading();
   }
@@ -149,6 +156,7 @@ class _$LoadingImpl implements _Loading {
         alphabeticalOrderFiles,
     TResult? Function(FileMetadata file, DashboardState? previousState)?
         openPdf,
+    TResult? Function()? notPermitted,
   }) {
     return loading?.call();
   }
@@ -161,6 +169,7 @@ class _$LoadingImpl implements _Loading {
     TResult Function(List<FileMetadata> alphabeticalFiles)?
         alphabeticalOrderFiles,
     TResult Function(FileMetadata file, DashboardState? previousState)? openPdf,
+    TResult Function()? notPermitted,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -177,6 +186,7 @@ class _$LoadingImpl implements _Loading {
     required TResult Function(_AlphabeticalOrderFiles value)
         alphabeticalOrderFiles,
     required TResult Function(_OpenPdf value) openPdf,
+    required TResult Function(_NotPermitted value) notPermitted,
   }) {
     return loading(this);
   }
@@ -188,6 +198,7 @@ class _$LoadingImpl implements _Loading {
     TResult? Function(_LastSeenFiles value)? lastSeenFiles,
     TResult? Function(_AlphabeticalOrderFiles value)? alphabeticalOrderFiles,
     TResult? Function(_OpenPdf value)? openPdf,
+    TResult? Function(_NotPermitted value)? notPermitted,
   }) {
     return loading?.call(this);
   }
@@ -199,6 +210,7 @@ class _$LoadingImpl implements _Loading {
     TResult Function(_LastSeenFiles value)? lastSeenFiles,
     TResult Function(_AlphabeticalOrderFiles value)? alphabeticalOrderFiles,
     TResult Function(_OpenPdf value)? openPdf,
+    TResult Function(_NotPermitted value)? notPermitted,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -291,6 +303,7 @@ class _$LastSeenFilesImpl implements _LastSeenFiles {
         alphabeticalOrderFiles,
     required TResult Function(FileMetadata file, DashboardState? previousState)
         openPdf,
+    required TResult Function() notPermitted,
   }) {
     return lastSeenFiles(this.lastSeenFiles);
   }
@@ -304,6 +317,7 @@ class _$LastSeenFilesImpl implements _LastSeenFiles {
         alphabeticalOrderFiles,
     TResult? Function(FileMetadata file, DashboardState? previousState)?
         openPdf,
+    TResult? Function()? notPermitted,
   }) {
     return lastSeenFiles?.call(this.lastSeenFiles);
   }
@@ -316,6 +330,7 @@ class _$LastSeenFilesImpl implements _LastSeenFiles {
     TResult Function(List<FileMetadata> alphabeticalFiles)?
         alphabeticalOrderFiles,
     TResult Function(FileMetadata file, DashboardState? previousState)? openPdf,
+    TResult Function()? notPermitted,
     required TResult orElse(),
   }) {
     if (lastSeenFiles != null) {
@@ -332,6 +347,7 @@ class _$LastSeenFilesImpl implements _LastSeenFiles {
     required TResult Function(_AlphabeticalOrderFiles value)
         alphabeticalOrderFiles,
     required TResult Function(_OpenPdf value) openPdf,
+    required TResult Function(_NotPermitted value) notPermitted,
   }) {
     return lastSeenFiles(this);
   }
@@ -343,6 +359,7 @@ class _$LastSeenFilesImpl implements _LastSeenFiles {
     TResult? Function(_LastSeenFiles value)? lastSeenFiles,
     TResult? Function(_AlphabeticalOrderFiles value)? alphabeticalOrderFiles,
     TResult? Function(_OpenPdf value)? openPdf,
+    TResult? Function(_NotPermitted value)? notPermitted,
   }) {
     return lastSeenFiles?.call(this);
   }
@@ -354,6 +371,7 @@ class _$LastSeenFilesImpl implements _LastSeenFiles {
     TResult Function(_LastSeenFiles value)? lastSeenFiles,
     TResult Function(_AlphabeticalOrderFiles value)? alphabeticalOrderFiles,
     TResult Function(_OpenPdf value)? openPdf,
+    TResult Function(_NotPermitted value)? notPermitted,
     required TResult orElse(),
   }) {
     if (lastSeenFiles != null) {
@@ -457,6 +475,7 @@ class _$AlphabeticalOrderFilesImpl implements _AlphabeticalOrderFiles {
         alphabeticalOrderFiles,
     required TResult Function(FileMetadata file, DashboardState? previousState)
         openPdf,
+    required TResult Function() notPermitted,
   }) {
     return alphabeticalOrderFiles(alphabeticalFiles);
   }
@@ -470,6 +489,7 @@ class _$AlphabeticalOrderFilesImpl implements _AlphabeticalOrderFiles {
         alphabeticalOrderFiles,
     TResult? Function(FileMetadata file, DashboardState? previousState)?
         openPdf,
+    TResult? Function()? notPermitted,
   }) {
     return alphabeticalOrderFiles?.call(alphabeticalFiles);
   }
@@ -482,6 +502,7 @@ class _$AlphabeticalOrderFilesImpl implements _AlphabeticalOrderFiles {
     TResult Function(List<FileMetadata> alphabeticalFiles)?
         alphabeticalOrderFiles,
     TResult Function(FileMetadata file, DashboardState? previousState)? openPdf,
+    TResult Function()? notPermitted,
     required TResult orElse(),
   }) {
     if (alphabeticalOrderFiles != null) {
@@ -498,6 +519,7 @@ class _$AlphabeticalOrderFilesImpl implements _AlphabeticalOrderFiles {
     required TResult Function(_AlphabeticalOrderFiles value)
         alphabeticalOrderFiles,
     required TResult Function(_OpenPdf value) openPdf,
+    required TResult Function(_NotPermitted value) notPermitted,
   }) {
     return alphabeticalOrderFiles(this);
   }
@@ -509,6 +531,7 @@ class _$AlphabeticalOrderFilesImpl implements _AlphabeticalOrderFiles {
     TResult? Function(_LastSeenFiles value)? lastSeenFiles,
     TResult? Function(_AlphabeticalOrderFiles value)? alphabeticalOrderFiles,
     TResult? Function(_OpenPdf value)? openPdf,
+    TResult? Function(_NotPermitted value)? notPermitted,
   }) {
     return alphabeticalOrderFiles?.call(this);
   }
@@ -520,6 +543,7 @@ class _$AlphabeticalOrderFilesImpl implements _AlphabeticalOrderFiles {
     TResult Function(_LastSeenFiles value)? lastSeenFiles,
     TResult Function(_AlphabeticalOrderFiles value)? alphabeticalOrderFiles,
     TResult Function(_OpenPdf value)? openPdf,
+    TResult Function(_NotPermitted value)? notPermitted,
     required TResult orElse(),
   }) {
     if (alphabeticalOrderFiles != null) {
@@ -633,6 +657,7 @@ class _$OpenPdfImpl implements _OpenPdf {
         alphabeticalOrderFiles,
     required TResult Function(FileMetadata file, DashboardState? previousState)
         openPdf,
+    required TResult Function() notPermitted,
   }) {
     return openPdf(file, previousState);
   }
@@ -646,6 +671,7 @@ class _$OpenPdfImpl implements _OpenPdf {
         alphabeticalOrderFiles,
     TResult? Function(FileMetadata file, DashboardState? previousState)?
         openPdf,
+    TResult? Function()? notPermitted,
   }) {
     return openPdf?.call(file, previousState);
   }
@@ -658,6 +684,7 @@ class _$OpenPdfImpl implements _OpenPdf {
     TResult Function(List<FileMetadata> alphabeticalFiles)?
         alphabeticalOrderFiles,
     TResult Function(FileMetadata file, DashboardState? previousState)? openPdf,
+    TResult Function()? notPermitted,
     required TResult orElse(),
   }) {
     if (openPdf != null) {
@@ -674,6 +701,7 @@ class _$OpenPdfImpl implements _OpenPdf {
     required TResult Function(_AlphabeticalOrderFiles value)
         alphabeticalOrderFiles,
     required TResult Function(_OpenPdf value) openPdf,
+    required TResult Function(_NotPermitted value) notPermitted,
   }) {
     return openPdf(this);
   }
@@ -685,6 +713,7 @@ class _$OpenPdfImpl implements _OpenPdf {
     TResult? Function(_LastSeenFiles value)? lastSeenFiles,
     TResult? Function(_AlphabeticalOrderFiles value)? alphabeticalOrderFiles,
     TResult? Function(_OpenPdf value)? openPdf,
+    TResult? Function(_NotPermitted value)? notPermitted,
   }) {
     return openPdf?.call(this);
   }
@@ -696,6 +725,7 @@ class _$OpenPdfImpl implements _OpenPdf {
     TResult Function(_LastSeenFiles value)? lastSeenFiles,
     TResult Function(_AlphabeticalOrderFiles value)? alphabeticalOrderFiles,
     TResult Function(_OpenPdf value)? openPdf,
+    TResult Function(_NotPermitted value)? notPermitted,
     required TResult orElse(),
   }) {
     if (openPdf != null) {
@@ -715,4 +745,130 @@ abstract class _OpenPdf implements DashboardState {
   @JsonKey(ignore: true)
   _$$OpenPdfImplCopyWith<_$OpenPdfImpl> get copyWith =>
       throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$NotPermittedImplCopyWith<$Res> {
+  factory _$$NotPermittedImplCopyWith(
+          _$NotPermittedImpl value, $Res Function(_$NotPermittedImpl) then) =
+      __$$NotPermittedImplCopyWithImpl<$Res>;
+}
+
+/// @nodoc
+class __$$NotPermittedImplCopyWithImpl<$Res>
+    extends _$DashboardStateCopyWithImpl<$Res, _$NotPermittedImpl>
+    implements _$$NotPermittedImplCopyWith<$Res> {
+  __$$NotPermittedImplCopyWithImpl(
+      _$NotPermittedImpl _value, $Res Function(_$NotPermittedImpl) _then)
+      : super(_value, _then);
+}
+
+/// @nodoc
+
+class _$NotPermittedImpl implements _NotPermitted {
+  const _$NotPermittedImpl();
+
+  @override
+  String toString() {
+    return 'DashboardState.notPermitted()';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType && other is _$NotPermittedImpl);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loading,
+    required TResult Function(List<FileMetadata> lastSeenFiles) lastSeenFiles,
+    required TResult Function(List<FileMetadata> alphabeticalFiles)
+        alphabeticalOrderFiles,
+    required TResult Function(FileMetadata file, DashboardState? previousState)
+        openPdf,
+    required TResult Function() notPermitted,
+  }) {
+    return notPermitted();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? loading,
+    TResult? Function(List<FileMetadata> lastSeenFiles)? lastSeenFiles,
+    TResult? Function(List<FileMetadata> alphabeticalFiles)?
+        alphabeticalOrderFiles,
+    TResult? Function(FileMetadata file, DashboardState? previousState)?
+        openPdf,
+    TResult? Function()? notPermitted,
+  }) {
+    return notPermitted?.call();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function(List<FileMetadata> lastSeenFiles)? lastSeenFiles,
+    TResult Function(List<FileMetadata> alphabeticalFiles)?
+        alphabeticalOrderFiles,
+    TResult Function(FileMetadata file, DashboardState? previousState)? openPdf,
+    TResult Function()? notPermitted,
+    required TResult orElse(),
+  }) {
+    if (notPermitted != null) {
+      return notPermitted();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_LastSeenFiles value) lastSeenFiles,
+    required TResult Function(_AlphabeticalOrderFiles value)
+        alphabeticalOrderFiles,
+    required TResult Function(_OpenPdf value) openPdf,
+    required TResult Function(_NotPermitted value) notPermitted,
+  }) {
+    return notPermitted(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_LastSeenFiles value)? lastSeenFiles,
+    TResult? Function(_AlphabeticalOrderFiles value)? alphabeticalOrderFiles,
+    TResult? Function(_OpenPdf value)? openPdf,
+    TResult? Function(_NotPermitted value)? notPermitted,
+  }) {
+    return notPermitted?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Loading value)? loading,
+    TResult Function(_LastSeenFiles value)? lastSeenFiles,
+    TResult Function(_AlphabeticalOrderFiles value)? alphabeticalOrderFiles,
+    TResult Function(_OpenPdf value)? openPdf,
+    TResult Function(_NotPermitted value)? notPermitted,
+    required TResult orElse(),
+  }) {
+    if (notPermitted != null) {
+      return notPermitted(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _NotPermitted implements DashboardState {
+  const factory _NotPermitted() = _$NotPermittedImpl;
 }

@@ -6,5 +6,6 @@
     "last_seen":"Last seen",
     "name":"Name",
     "size":"Size",
-    "delete":"Delete"
+    "no_access_to_external_memory":"No access to the device's external memory.",
+    "give_permission":"Give permission"
 }

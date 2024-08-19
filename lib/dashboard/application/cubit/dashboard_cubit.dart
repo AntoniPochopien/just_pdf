@@ -38,6 +38,15 @@ class DashboardCubit extends Cubit<DashboardState> {
             fetchLastSeenFiles();
         }
       }
+    }else{
+      emit(const DashboardState.notPermitted());
+    }
+  }
+
+  void checkPermissions()async{
+    final permission = await dashboardRepository.checkStoragePermission();
+    if(permission){
+      init();
     }
   }
 
