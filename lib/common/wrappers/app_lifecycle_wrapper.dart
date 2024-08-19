@@ -26,7 +26,6 @@ class _AppLifecycleWrapperState extends State<AppLifecycleWrapper>
   @override
   void didChangeAppLifecycleState(AppLifecycleState state) {
     super.didChangeAppLifecycleState(state);
-    print('gówno ${widget.onResumed}');
     if (state == AppLifecycleState.resumed && widget.onResumed != null) {
       widget.onResumed!();
     }
