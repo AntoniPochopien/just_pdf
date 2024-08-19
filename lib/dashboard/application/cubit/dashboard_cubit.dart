@@ -5,6 +5,7 @@ import 'package:just_pdf/dashboard/domain/i_dashboard_repository.dart';
 import 'package:just_pdf/dashboard/domain/options.dart';
 import 'package:just_pdf/local_storage/domain/i_local_storage_repository.dart';
 import 'package:file_picker/file_picker.dart';
+import 'package:just_pdf/printing/domain/i_printing_repository.dart';
 import 'package:uuid/uuid.dart';
 
 part 'dashboard_state.dart';
@@ -13,9 +14,12 @@ part 'dashboard_cubit.freezed.dart';
 class DashboardCubit extends Cubit<DashboardState> {
   final IDashboardRepository dashboardRepository;
   final ILocalStorageRepository localStorageRepository;
-  DashboardCubit(
-      {required this.dashboardRepository, required this.localStorageRepository})
-      : super(const DashboardState.loading());
+  final IPrintingRepository printingRepository;
+  DashboardCubit({
+    required this.dashboardRepository,
+    required this.localStorageRepository,
+    required this.printingRepository,
+  }) : super(const DashboardState.loading());
   static const _uuid = Uuid();
 
   void init() async {
@@ -110,4 +114,10 @@ class DashboardCubit extends Cubit<DashboardState> {
       );
     }
   }
+
+  void print(FileMetadata fileMetadata) async =>
+      await printingRepository.print(fileMetadata);
+
+  void share(FileMetadata fileMetadata) async =>
+      await printingRepository.share(fileMetadata);
 }

@@ -13,6 +13,7 @@ import 'package:just_pdf/di.dart';
 import 'package:just_pdf/l10n/l10n.dart';
 import 'package:just_pdf/local_storage/domain/i_local_storage_repository.dart';
 import 'package:just_pdf/navigation/app_router.dart';
+import 'package:just_pdf/printing/domain/i_printing_repository.dart';
 
 @RoutePage()
 class DashboardScreen extends StatelessWidget {
@@ -24,6 +25,7 @@ class DashboardScreen extends StatelessWidget {
       create: (context) => DashboardCubit(
         dashboardRepository: getIt<IDashboardRepository>(),
         localStorageRepository: getIt<ILocalStorageRepository>(),
+        printingRepository: getIt<IPrintingRepository>(),
       )..init(),
       child: BlocListener<DashboardCubit, DashboardState>(
         listener: (context, state) {
@@ -46,8 +48,12 @@ class DashboardScreen extends StatelessWidget {
                               .map((e) => OptionPill(
                                   onTap: () => e.onTap(context),
                                   selected: state.maybeWhen(
-                                    lastSeenFiles: (_) => Options.lastSeen == e ? true : false,
-                                    alphabeticalOrderFiles: (_) => Options.alphabeticalOrder == e ? true : false,
+                                    lastSeenFiles: (_) =>
+                                        Options.lastSeen == e ? true : false,
+                                    alphabeticalOrderFiles: (_) =>
+                                        Options.alphabeticalOrder == e
+                                            ? true
+                                            : false,
                                     orElse: () => false,
                                   ),
                                   text: e.getTitle(context)))

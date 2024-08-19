@@ -25,8 +25,13 @@ class FileTile extends StatelessWidget {
         },
         onLongPress: () => showDialog(
           context: context,
-          builder: (ctx) =>
-              ContextMenuDialog(ctx: context, fileMetadata: fileMetadata),
+          builder: (ctx) => ContextMenuDialog(
+            fileMetadata: fileMetadata,
+            onDelete: () =>
+                context.read<DashboardCubit>().deleteFile(fileMetadata),
+            onPrint: () => context.read<DashboardCubit>().print(fileMetadata),
+            onShare: () => context.read<DashboardCubit>().share(fileMetadata),
+          ),
         ),
         child: Padding(
           padding: const EdgeInsets.all(8.0),

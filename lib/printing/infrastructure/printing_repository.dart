@@ -13,8 +13,9 @@ class PrintingRepository implements IPrintingRepository {
     try {
       final file = File(fileMetadata.filePath);
       await Printing.layoutPdf(
-          onLayout: (format) async => await file.readAsBytes(),
-          name: fileMetadata.getName);
+        onLayout: (format) async => await file.readAsBytes(),
+        name: fileMetadata.getName,
+      );
       return right(unit);
     } catch (e) {
       log('print unexpected error: $e');
@@ -27,7 +28,7 @@ class PrintingRepository implements IPrintingRepository {
     try {
       final file = File(fileMetadata.filePath);
       await Printing.sharePdf(
-          bytes: await file.readAsBytes(), filename: 'my-document.pdf');
+          bytes: await file.readAsBytes(), filename: fileMetadata.getName);
       return right(unit);
     } catch (e) {
       log('share unexpected error: $e');
