@@ -22,7 +22,8 @@ mixin _$DashboardState {
     required TResult Function(List<FileMetadata> lastSeenFiles) lastSeenFiles,
     required TResult Function(List<FileMetadata> alphabeticalFiles)
         alphabeticalOrderFiles,
-    required TResult Function(FileMetadata openPdf) openPdf,
+    required TResult Function(FileMetadata file, DashboardState? previousState)
+        openPdf,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -31,7 +32,8 @@ mixin _$DashboardState {
     TResult? Function(List<FileMetadata> lastSeenFiles)? lastSeenFiles,
     TResult? Function(List<FileMetadata> alphabeticalFiles)?
         alphabeticalOrderFiles,
-    TResult? Function(FileMetadata openPdf)? openPdf,
+    TResult? Function(FileMetadata file, DashboardState? previousState)?
+        openPdf,
   }) =>
       throw _privateConstructorUsedError;
   @optionalTypeArgs
@@ -40,7 +42,7 @@ mixin _$DashboardState {
     TResult Function(List<FileMetadata> lastSeenFiles)? lastSeenFiles,
     TResult Function(List<FileMetadata> alphabeticalFiles)?
         alphabeticalOrderFiles,
-    TResult Function(FileMetadata openPdf)? openPdf,
+    TResult Function(FileMetadata file, DashboardState? previousState)? openPdf,
     required TResult orElse(),
   }) =>
       throw _privateConstructorUsedError;
@@ -132,7 +134,8 @@ class _$LoadingImpl implements _Loading {
     required TResult Function(List<FileMetadata> lastSeenFiles) lastSeenFiles,
     required TResult Function(List<FileMetadata> alphabeticalFiles)
         alphabeticalOrderFiles,
-    required TResult Function(FileMetadata openPdf) openPdf,
+    required TResult Function(FileMetadata file, DashboardState? previousState)
+        openPdf,
   }) {
     return loading();
   }
@@ -144,7 +147,8 @@ class _$LoadingImpl implements _Loading {
     TResult? Function(List<FileMetadata> lastSeenFiles)? lastSeenFiles,
     TResult? Function(List<FileMetadata> alphabeticalFiles)?
         alphabeticalOrderFiles,
-    TResult? Function(FileMetadata openPdf)? openPdf,
+    TResult? Function(FileMetadata file, DashboardState? previousState)?
+        openPdf,
   }) {
     return loading?.call();
   }
@@ -156,7 +160,7 @@ class _$LoadingImpl implements _Loading {
     TResult Function(List<FileMetadata> lastSeenFiles)? lastSeenFiles,
     TResult Function(List<FileMetadata> alphabeticalFiles)?
         alphabeticalOrderFiles,
-    TResult Function(FileMetadata openPdf)? openPdf,
+    TResult Function(FileMetadata file, DashboardState? previousState)? openPdf,
     required TResult orElse(),
   }) {
     if (loading != null) {
@@ -285,7 +289,8 @@ class _$LastSeenFilesImpl implements _LastSeenFiles {
     required TResult Function(List<FileMetadata> lastSeenFiles) lastSeenFiles,
     required TResult Function(List<FileMetadata> alphabeticalFiles)
         alphabeticalOrderFiles,
-    required TResult Function(FileMetadata openPdf) openPdf,
+    required TResult Function(FileMetadata file, DashboardState? previousState)
+        openPdf,
   }) {
     return lastSeenFiles(this.lastSeenFiles);
   }
@@ -297,7 +302,8 @@ class _$LastSeenFilesImpl implements _LastSeenFiles {
     TResult? Function(List<FileMetadata> lastSeenFiles)? lastSeenFiles,
     TResult? Function(List<FileMetadata> alphabeticalFiles)?
         alphabeticalOrderFiles,
-    TResult? Function(FileMetadata openPdf)? openPdf,
+    TResult? Function(FileMetadata file, DashboardState? previousState)?
+        openPdf,
   }) {
     return lastSeenFiles?.call(this.lastSeenFiles);
   }
@@ -309,7 +315,7 @@ class _$LastSeenFilesImpl implements _LastSeenFiles {
     TResult Function(List<FileMetadata> lastSeenFiles)? lastSeenFiles,
     TResult Function(List<FileMetadata> alphabeticalFiles)?
         alphabeticalOrderFiles,
-    TResult Function(FileMetadata openPdf)? openPdf,
+    TResult Function(FileMetadata file, DashboardState? previousState)? openPdf,
     required TResult orElse(),
   }) {
     if (lastSeenFiles != null) {
@@ -449,7 +455,8 @@ class _$AlphabeticalOrderFilesImpl implements _AlphabeticalOrderFiles {
     required TResult Function(List<FileMetadata> lastSeenFiles) lastSeenFiles,
     required TResult Function(List<FileMetadata> alphabeticalFiles)
         alphabeticalOrderFiles,
-    required TResult Function(FileMetadata openPdf) openPdf,
+    required TResult Function(FileMetadata file, DashboardState? previousState)
+        openPdf,
   }) {
     return alphabeticalOrderFiles(alphabeticalFiles);
   }
@@ -461,7 +468,8 @@ class _$AlphabeticalOrderFilesImpl implements _AlphabeticalOrderFiles {
     TResult? Function(List<FileMetadata> lastSeenFiles)? lastSeenFiles,
     TResult? Function(List<FileMetadata> alphabeticalFiles)?
         alphabeticalOrderFiles,
-    TResult? Function(FileMetadata openPdf)? openPdf,
+    TResult? Function(FileMetadata file, DashboardState? previousState)?
+        openPdf,
   }) {
     return alphabeticalOrderFiles?.call(alphabeticalFiles);
   }
@@ -473,7 +481,7 @@ class _$AlphabeticalOrderFilesImpl implements _AlphabeticalOrderFiles {
     TResult Function(List<FileMetadata> lastSeenFiles)? lastSeenFiles,
     TResult Function(List<FileMetadata> alphabeticalFiles)?
         alphabeticalOrderFiles,
-    TResult Function(FileMetadata openPdf)? openPdf,
+    TResult Function(FileMetadata file, DashboardState? previousState)? openPdf,
     required TResult orElse(),
   }) {
     if (alphabeticalOrderFiles != null) {
@@ -538,7 +546,9 @@ abstract class _$$OpenPdfImplCopyWith<$Res> {
           _$OpenPdfImpl value, $Res Function(_$OpenPdfImpl) then) =
       __$$OpenPdfImplCopyWithImpl<$Res>;
   @useResult
-  $Res call({FileMetadata openPdf});
+  $Res call({FileMetadata file, DashboardState? previousState});
+
+  $DashboardStateCopyWith<$Res>? get previousState;
 }
 
 /// @nodoc
@@ -552,28 +562,47 @@ class __$$OpenPdfImplCopyWithImpl<$Res>
   @pragma('vm:prefer-inline')
   @override
   $Res call({
-    Object? openPdf = null,
+    Object? file = null,
+    Object? previousState = freezed,
   }) {
     return _then(_$OpenPdfImpl(
-      null == openPdf
-          ? _value.openPdf
-          : openPdf // ignore: cast_nullable_to_non_nullable
+      file: null == file
+          ? _value.file
+          : file // ignore: cast_nullable_to_non_nullable
               as FileMetadata,
+      previousState: freezed == previousState
+          ? _value.previousState
+          : previousState // ignore: cast_nullable_to_non_nullable
+              as DashboardState?,
     ));
+  }
+
+  @override
+  @pragma('vm:prefer-inline')
+  $DashboardStateCopyWith<$Res>? get previousState {
+    if (_value.previousState == null) {
+      return null;
+    }
+
+    return $DashboardStateCopyWith<$Res>(_value.previousState!, (value) {
+      return _then(_value.copyWith(previousState: value));
+    });
   }
 }
 
 /// @nodoc
 
 class _$OpenPdfImpl implements _OpenPdf {
-  const _$OpenPdfImpl(this.openPdf);
+  const _$OpenPdfImpl({required this.file, this.previousState});
 
   @override
-  final FileMetadata openPdf;
+  final FileMetadata file;
+  @override
+  final DashboardState? previousState;
 
   @override
   String toString() {
-    return 'DashboardState.openPdf(openPdf: $openPdf)';
+    return 'DashboardState.openPdf(file: $file, previousState: $previousState)';
   }
 
   @override
@@ -581,11 +610,13 @@ class _$OpenPdfImpl implements _OpenPdf {
     return identical(this, other) ||
         (other.runtimeType == runtimeType &&
             other is _$OpenPdfImpl &&
-            (identical(other.openPdf, openPdf) || other.openPdf == openPdf));
+            (identical(other.file, file) || other.file == file) &&
+            (identical(other.previousState, previousState) ||
+                other.previousState == previousState));
   }
 
   @override
-  int get hashCode => Object.hash(runtimeType, openPdf);
+  int get hashCode => Object.hash(runtimeType, file, previousState);
 
   @JsonKey(ignore: true)
   @override
@@ -600,9 +631,10 @@ class _$OpenPdfImpl implements _OpenPdf {
     required TResult Function(List<FileMetadata> lastSeenFiles) lastSeenFiles,
     required TResult Function(List<FileMetadata> alphabeticalFiles)
         alphabeticalOrderFiles,
-    required TResult Function(FileMetadata openPdf) openPdf,
+    required TResult Function(FileMetadata file, DashboardState? previousState)
+        openPdf,
   }) {
-    return openPdf(this.openPdf);
+    return openPdf(file, previousState);
   }
 
   @override
@@ -612,9 +644,10 @@ class _$OpenPdfImpl implements _OpenPdf {
     TResult? Function(List<FileMetadata> lastSeenFiles)? lastSeenFiles,
     TResult? Function(List<FileMetadata> alphabeticalFiles)?
         alphabeticalOrderFiles,
-    TResult? Function(FileMetadata openPdf)? openPdf,
+    TResult? Function(FileMetadata file, DashboardState? previousState)?
+        openPdf,
   }) {
-    return openPdf?.call(this.openPdf);
+    return openPdf?.call(file, previousState);
   }
 
   @override
@@ -624,11 +657,11 @@ class _$OpenPdfImpl implements _OpenPdf {
     TResult Function(List<FileMetadata> lastSeenFiles)? lastSeenFiles,
     TResult Function(List<FileMetadata> alphabeticalFiles)?
         alphabeticalOrderFiles,
-    TResult Function(FileMetadata openPdf)? openPdf,
+    TResult Function(FileMetadata file, DashboardState? previousState)? openPdf,
     required TResult orElse(),
   }) {
     if (openPdf != null) {
-      return openPdf(this.openPdf);
+      return openPdf(file, previousState);
     }
     return orElse();
   }
@@ -673,9 +706,12 @@ class _$OpenPdfImpl implements _OpenPdf {
 }
 
 abstract class _OpenPdf implements DashboardState {
-  const factory _OpenPdf(final FileMetadata openPdf) = _$OpenPdfImpl;
+  const factory _OpenPdf(
+      {required final FileMetadata file,
+      final DashboardState? previousState}) = _$OpenPdfImpl;
 
-  FileMetadata get openPdf;
+  FileMetadata get file;
+  DashboardState? get previousState;
   @JsonKey(ignore: true)
   _$$OpenPdfImplCopyWith<_$OpenPdfImpl> get copyWith =>
       throw _privateConstructorUsedError;

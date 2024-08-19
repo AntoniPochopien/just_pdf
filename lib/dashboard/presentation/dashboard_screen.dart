@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:just_pdf/common/widgets/just_pdf_app_bar.dart';
+import 'package:just_pdf/common/wrappers/route_aware_wrapper.dart';
 import 'package:just_pdf/dashboard/application/cubit/dashboard_cubit.dart';
 import 'package:just_pdf/dashboard/domain/i_dashboard_repository.dart';
 import 'package:just_pdf/dashboard/presentation/widgets/files_list_view.dart';
@@ -26,50 +27,58 @@ class DashboardScreen extends StatelessWidget {
       child: BlocListener<DashboardCubit, DashboardState>(
         listener: (context, state) {
           state.whenOrNull(
-              openPdf: (openPdf) =>
+              openPdf: (openPdf, _) =>
                   context.pushRoute(PdfViewerRoute(fileMetadata: openPdf)));
         },
         child: BlocBuilder<DashboardCubit, DashboardState>(
-          builder: (context, state) => Scaffold(
-            appBar: const JustPdfAppBar(actions: [LanguageChangeButton()]),
-            body: state.maybeWhen(
-              loading: () => const Center(child: CircularProgressIndicator()),
-              orElse: () => Column(
-                children: [
-                  SingleChildScrollView(
-                    child: Row(
-                      children: [
-                        OptionPill(
-                          onTap: () => context.read<DashboardCubit>().fetchLastSeenFiles(),
-                            selected: state.maybeWhen(
-                              lastSeenFiles: (lastSeenFiles) => true,
-                              orElse: () => false,
-                            ),
-                            text: T(context).recently_viewed),
-                        OptionPill(
-                          onTap: () => context.read<DashboardCubit>().alphabeticalOrderFiles(),
-                            selected: state.maybeWhen(
-                              alphabeticalOrderFiles: (alphabeticalFiles) =>
-                                  true,
-                              orElse: () => false,
-                            ),
-                            text: T(context).a_z)
-                      ],
+          builder: (context, state) => RouteAwareWrapper(
+            onDidPopNext: () => context.read<DashboardCubit>().reloadFiles(),
+            child: Scaffold(
+              appBar: const JustPdfAppBar(actions: [LanguageChangeButton()]),
+              body: state.maybeWhen(
+                loading: () => const Center(child: CircularProgressIndicator()),
+                orElse: () => Column(
+                  children: [
+                    SingleChildScrollView(
+                      child: Row(
+                        children: [
+                          OptionPill(
+                              onTap: () => context
+                                  .read<DashboardCubit>()
+                                  .fetchLastSeenFiles(),
+                              selected: state.maybeWhen(
+                                lastSeenFiles: (lastSeenFiles) => true,
+                                orElse: () => false,
+                              ),
+                              text: T(context).recently_viewed),
+                          OptionPill(
+                              onTap: () => context
+                                  .read<DashboardCubit>()
+                                  .alphabeticalOrderFiles(),
+                              selected: state.maybeWhen(
+                                alphabeticalOrderFiles: (alphabeticalFiles) =>
+                                    true,
+                                orElse: () => false,
+                              ),
+                              text: T(context).a_z)
+                        ],
+                      ),
                     ),
-                  ),
-                  state.maybeWhen(
-                    lastSeenFiles: (lastSeenFiles) =>
-                        FilesListView(files: lastSeenFiles),
-                    alphabeticalOrderFiles: (alphabeticalFiles) =>
-                        FilesListView(files: alphabeticalFiles),
-                    orElse: () => const SizedBox(),
-                  )
-                ],
+                    state.maybeWhen(
+                      lastSeenFiles: (lastSeenFiles) =>
+                          FilesListView(files: lastSeenFiles),
+                      alphabeticalOrderFiles: (alphabeticalFiles) =>
+                          FilesListView(files: alphabeticalFiles),
+                      orElse: () => const SizedBox(),
+                    )
+                  ],
+                ),
               ),
+              floatingActionButton: ElevatedButton(
+                  child: Text(T(context).search_on_your_phone),
+                  onPressed: () =>
+                      context.read<DashboardCubit>().pickPdfFile()),
             ),
-            floatingActionButton: ElevatedButton(
-                child: Text(T(context).search_on_your_phone),
-                onPressed: () => context.read<DashboardCubit>().pickPdfFile()),
           ),
         ),
       ),

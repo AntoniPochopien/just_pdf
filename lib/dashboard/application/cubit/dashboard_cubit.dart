@@ -12,10 +12,9 @@ part 'dashboard_cubit.freezed.dart';
 class DashboardCubit extends Cubit<DashboardState> {
   final IDashboardRepository dashboardRepository;
   final ILocalStorageRepository localStorageRepository;
-  DashboardCubit({
-    required this.dashboardRepository,
-    required this.localStorageRepository
-  }) : super(const DashboardState.loading());
+  DashboardCubit(
+      {required this.dashboardRepository, required this.localStorageRepository})
+      : super(const DashboardState.loading());
   static const _uuid = Uuid();
 
   void init() async {
@@ -32,7 +31,7 @@ class DashboardCubit extends Cubit<DashboardState> {
     result.fold((l) {}, (r) async {
       final newFile = r.copyWith(id: _uuid.v1());
       await localStorageRepository.saveFile(newFile);
-      emit(DashboardState.openPdf(newFile));
+      emit(DashboardState.openPdf(file: newFile, previousState: null));
     });
   }
 
@@ -52,7 +51,7 @@ class DashboardCubit extends Cubit<DashboardState> {
     );
 
     await localStorageRepository.saveFile(fileMetadata);
-    emit(DashboardState.openPdf(fileMetadata));
+    emit(DashboardState.openPdf(file: fileMetadata, previousState: state));
   }
 
   void deleteFile(FileMetadata fileMetadata) async {
@@ -65,27 +64,35 @@ class DashboardCubit extends Cubit<DashboardState> {
 
   void onFileTap(FileMetadata fileMetadata) async {
     await localStorageRepository.saveFile(fileMetadata);
-    emit(DashboardState.openPdf(fileMetadata));
+    emit(DashboardState.openPdf(file: fileMetadata, previousState: state));
   }
 
   void fetchLastSeenFiles() {
-    final allFiles =
-        List<FileMetadata>.from(localStorageRepository.getFiles());
+    final allFiles = List<FileMetadata>.from(localStorageRepository.getFiles());
 
     //sort: newest on the top
     allFiles.sort((a, b) => b.lastViewed.compareTo(a.lastViewed));
-    
+
     emit(DashboardState.lastSeenFiles(lastSeenFiles: allFiles));
   }
 
-    void alphabeticalOrderFiles() {
-    final allFiles =
-        List<FileMetadata>.from(localStorageRepository.getFiles());
-    
+  void alphabeticalOrderFiles() {
+    final allFiles = List<FileMetadata>.from(localStorageRepository.getFiles());
+
     //sort: alphabetical order a-z
 
     allFiles.sort((a, b) => a.getName.compareTo(b.getName));
-      
+
     emit(DashboardState.alphabeticalOrderFiles(alphabeticalFiles: allFiles));
+  }
+
+  void reloadFiles(){
+    if(state is _OpenPdf){
+      final s = state as _OpenPdf;
+      s.previousState?.mapOrNull(
+        lastSeenFiles: (_) => fetchLastSeenFiles(),
+        alphabeticalOrderFiles: (_) => alphabeticalOrderFiles(),
+      );
+    }
   }
 }
