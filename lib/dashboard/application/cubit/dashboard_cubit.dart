@@ -38,14 +38,14 @@ class DashboardCubit extends Cubit<DashboardState> {
             fetchLastSeenFiles();
         }
       }
-    }else{
+    } else {
       emit(const DashboardState.notPermitted());
     }
   }
 
-  void checkPermissions()async{
+  void checkPermissions() async {
     final permission = await dashboardRepository.checkStoragePermission();
-    if(permission){
+    if (permission) {
       init();
     }
   }
@@ -53,9 +53,13 @@ class DashboardCubit extends Cubit<DashboardState> {
   Future<void> _getPdfFromIntent() async {
     final result = await dashboardRepository.getPdfFromIntent();
     result.fold((l) {}, (r) async {
+      if (r == null) {
+        return;
+      }
+      fetchLastSeenFiles();
       final newFile = r.copyWith(id: _uuid.v1());
       await localStorageRepository.saveFile(newFile);
-      emit(DashboardState.openPdf(file: newFile, previousState: null));
+      emit(DashboardState.openPdf(file: newFile, previousState: state));
     });
   }
 
@@ -124,7 +128,7 @@ class DashboardCubit extends Cubit<DashboardState> {
     }
   }
 
-  void print(FileMetadata fileMetadata) async =>
+  void printFile(FileMetadata fileMetadata) async =>
       await printingRepository.print(fileMetadata);
 
   void share(FileMetadata fileMetadata) async =>

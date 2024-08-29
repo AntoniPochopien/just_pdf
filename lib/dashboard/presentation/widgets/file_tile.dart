@@ -29,7 +29,7 @@ class FileTile extends StatelessWidget {
             fileMetadata: fileMetadata,
             onDelete: () =>
                 context.read<DashboardCubit>().deleteFile(fileMetadata),
-            onPrint: () => context.read<DashboardCubit>().print(fileMetadata),
+            onPrint: () => context.read<DashboardCubit>().printFile(fileMetadata),
             onShare: () => context.read<DashboardCubit>().share(fileMetadata),
           ),
         ),

@@ -45,7 +45,8 @@ class _PdfViewerScreenState extends State<PdfViewerScreen> {
           ),
           body: PDFView(
             filePath: widget.fileMetadata.filePath,
-            onLinkHandler: (url) => context.read<PdfViewerCubit>().uriLaunch(url),
+            onLinkHandler: (url) =>
+                context.read<PdfViewerCubit>().uriLaunch(url),
             onPageChanged: (page, total) {
               setState(() {
                 _currentPage = page!;

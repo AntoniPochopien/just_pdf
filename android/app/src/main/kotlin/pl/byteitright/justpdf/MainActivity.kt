@@ -15,22 +15,39 @@ class MainActivity: FlutterActivity(){
     override fun configureFlutterEngine(flutterEngine: FlutterEngine) {
         super.configureFlutterEngine(flutterEngine)
 
-        MethodChannel(flutterEngine.dartExecutor.binaryMessenger, channel).setMethodCallHandler { call, result ->
-            if (call.method == "getPdfDetails") {
-                val intent: Intent = intent
-                val data: Uri? = intent.data
-                if (data != null) {
-                    val details = getFileNameAndSize(data)
-                    if (details != null) {
-                        result.success(details)
+            MethodChannel(flutterEngine.dartExecutor.binaryMessenger, channel).setMethodCallHandler { call, result ->
+            when (call.method) {
+                "getPdfDetails" -> {
+                    val intent: Intent = intent
+                    val data: Uri? = intent.data
+                    if (data != null) {
+                        val details = getFileNameAndSize(data)
+                        if (details != null) {
+                            result.success(details)
+                        } else {
+                            result.error("UNAVAILABLE", "File details not available", null)
+                        }
                     } else {
-                        result.error("UNAVAILABLE", "File details not available", null)
+                        result.error("UNAVAILABLE", "PDF path not available", null)
                     }
-                } else {
-                    result.error("UNAVAILABLE", "PDF path not available", null)
                 }
-            } else {
-                result.notImplemented()
+                "getFileBytesFromUri" -> {
+                    val uriString = call.argument<String>("uri")
+                    if (uriString != null) {
+                        val uri = Uri.parse(uriString)
+                        val fileBytes = getFileBytes(uri)
+                        if (fileBytes != null) {
+                            result.success(fileBytes)
+                        } else {
+                            result.error("UNAVAILABLE", "File could not be read", null)
+                        }
+                    } else {
+                        result.error("INVALID_ARGUMENT", "URI is null", null)
+                    }
+                }
+                else -> {
+                    result.notImplemented()
+                }
             }
         }
     }
@@ -39,12 +56,23 @@ class MainActivity: FlutterActivity(){
         val projection = arrayOf(OpenableColumns.DISPLAY_NAME, OpenableColumns.SIZE)
         val contentResolver: ContentResolver = contentResolver
         val cursor: Cursor? = contentResolver.query(uri, projection, null, null, null)
-        if (cursor != null && cursor.moveToFirst()) {
+        return if (cursor != null && cursor.moveToFirst()) {
             val fileName = cursor.getString(cursor.getColumnIndexOrThrow(OpenableColumns.DISPLAY_NAME))
             val fileSize = cursor.getLong(cursor.getColumnIndexOrThrow(OpenableColumns.SIZE))
             cursor.close()
-            return listOf(uri.toString(), fileName, fileSize.toString())
+            listOf(uri.toString(), fileName, fileSize.toString())
+        } else {
+            null
         }
-        return null
+    }
+
+    private fun getFileBytes(uri: Uri): ByteArray? {
+        return try {
+            val inputStream = contentResolver.openInputStream(uri)
+            inputStream?.readBytes()
+        } catch (e: Exception) {
+            e.printStackTrace()
+            null
+        }
     }
 }
