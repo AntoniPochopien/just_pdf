@@ -12,7 +12,6 @@ import 'package:just_pdf/dashboard/presentation/widgets/not_permitted.dart';
 import 'package:just_pdf/dashboard/presentation/widgets/option_pills.dart';
 import 'package:just_pdf/dashboard/presentation/widgets/share_delete_print.dart';
 import 'package:just_pdf/di.dart';
-import 'package:just_pdf/l10n/l10n.dart';
 import 'package:just_pdf/local_storage/domain/i_local_storage_repository.dart';
 import 'package:just_pdf/navigation/app_router.dart';
 import 'package:just_pdf/printing/domain/i_printing_repository.dart';
