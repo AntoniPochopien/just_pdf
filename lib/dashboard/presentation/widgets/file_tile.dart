@@ -21,63 +21,83 @@ class FileTile extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Padding(
-      padding: Dim.verticalPadding,
-      child: InkWell(
-        borderRadius: BorderRadius.circular(Dim.radius),
-        onTap: () => onTap(),
-        onLongPress: () => onLongPress(),
-        child: Padding(
-          padding: const EdgeInsets.all(8.0),
-          child: Row(children: [
-            BlocBuilder<DashboardCubit, DashboardState>(
-                builder: (context, state) => Icon(
-                    state.maybeWhen(
-                        filesSelection: (selectedFiles, allFiles) {
-                          if (selectedFiles.contains(fileMetadata)) {
-                            return Icons.radio_button_checked;
-                          } else {
-                            return Icons.radio_button_off;
-                          }
-                        },
-                        orElse: () => Icons.picture_as_pdf),
-                    size: 32)),
-            const SizedBox(width: 16),
-            Expanded(
-              child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Text(
-                      fileMetadata.getName,
-                      style: Font.h4Dark,
-                      maxLines: 1,
-                      overflow: TextOverflow.ellipsis,
-                    ),
-                    Row(
-                        crossAxisAlignment: CrossAxisAlignment.start,
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
-                          Text(
-                            '${fileMetadata.getSize.toStringAsFixed(2)}Mb',
-                            style: Font.h5Dark
-                                .copyWith(color: Colors.black.withOpacity(0.6)),
-                          ),
-                          Flexible(
-                            child: FittedBox(
-                              child: Text(
-                                '${T(context).last_seen}:\n${_dateFormat.format(fileMetadata.lastViewed)}',
-                                textAlign: TextAlign.end,
-                                style: Font.h5Dark.copyWith(
-                                    color: Colors.black.withOpacity(0.6)),
-                              ),
+    return BlocBuilder<DashboardCubit, DashboardState>(
+        builder: (context, state) => Padding(
+              padding: Dim.verticalPadding,
+              child: InkWell(
+                borderRadius: BorderRadius.circular(Dim.radius),
+                onTap: () => onTap(),
+                onLongPress: () => onLongPress(),
+                child: Padding(
+                  padding: const EdgeInsets.all(8.0),
+                  child: Row(children: [
+                    Icon(
+                        state.maybeWhen(
+                            filesSelection: (selectedFiles, allFiles) {
+                              if (selectedFiles.contains(fileMetadata)) {
+                                return Icons.radio_button_checked;
+                              } else {
+                                return Icons.radio_button_off;
+                              }
+                            },
+                            orElse: () => Icons.picture_as_pdf),
+                        size: 32),
+                    const SizedBox(width: 16),
+                    Expanded(
+                      child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                Flexible(
+                                  child: Text(
+                                    fileMetadata.getName,
+                                    style: Font.h4Dark,
+                                    maxLines: 1,
+                                    overflow: TextOverflow.ellipsis,
+                                  ),
+                                ),
+                                AnimatedSwitcher(
+                                  duration: const Duration(milliseconds: 300),
+                                  child: state.maybeWhen(
+                                      filesSelection: (_, __) =>
+                                          const SizedBox(height: 48),
+                                      orElse: () => IconButton(
+                                          onPressed: () => context.read<DashboardCubit>().toggleFavorite(fileMetadata),
+                                          icon: Icon(fileMetadata.favorite
+                                              ? Icons.favorite
+                                              : Icons.favorite_border))),
+                                )
+                              ],
                             ),
-                          )
-                        ])
+                            Row(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  Text(
+                                    '${fileMetadata.getSize.toStringAsFixed(2)}Mb',
+                                    style: Font.h5Dark.copyWith(
+                                        color: Colors.black.withOpacity(0.6)),
+                                  ),
+                                  Flexible(
+                                    child: FittedBox(
+                                      child: Text(
+                                        '${T(context).last_seen}:\n${_dateFormat.format(fileMetadata.lastViewed)}',
+                                        textAlign: TextAlign.end,
+                                        style: Font.h5Dark.copyWith(
+                                            color:
+                                                Colors.black.withOpacity(0.6)),
+                                      ),
+                                    ),
+                                  )
+                                ])
+                          ]),
+                    ),
                   ]),
-            ),
-          ]),
-        ),
-      ),
-    );
+                ),
+              ),
+            ));
   }
 }

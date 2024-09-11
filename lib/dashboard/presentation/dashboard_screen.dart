@@ -59,6 +59,8 @@ class DashboardScreen extends StatelessWidget {
                             FilesListView(files: lastSeenFiles),
                         alphabeticalOrderFiles: (alphabeticalFiles) =>
                             FilesListView(files: alphabeticalFiles),
+                        favoriteFiles: (favoriteFiles) =>
+                            FilesListView(files: favoriteFiles),
                         filesSelection: (selectedFiles, allFiles) =>
                             FilesListView(files: allFiles),
                         orElse: () => const SizedBox(),
@@ -67,13 +69,12 @@ class DashboardScreen extends StatelessWidget {
                   ),
                 ),
                 floatingActionButton: state.maybeWhen(
-                  notPermitted: () => null,
-                  filesSelection: (_, __) => null,
-                  orElse: () => ElevatedButton(
-                      child: Text(T(context).search_on_your_phone),
-                      onPressed: () =>
-                          context.read<DashboardCubit>().pickPdfFile()),
-                ),
+                    notPermitted: () => null,
+                    filesSelection: (_, __) => null,
+                    orElse: () => FloatingActionButton(
+                        child: const Icon(Icons.library_add),
+                        onPressed: () =>
+                            context.read<DashboardCubit>().pickPdfFile())),
               ),
             ),
           ),

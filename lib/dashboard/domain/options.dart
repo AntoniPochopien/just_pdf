@@ -12,6 +12,8 @@ enum Options {
   lastSeen,
   @HiveField(1)
   alphabeticalOrder,
+  @HiveField(2)
+  favorite,
 }
 
 extension OptionsExtension on Options {
@@ -21,15 +23,19 @@ extension OptionsExtension on Options {
         return T(context).recently_viewed;
       case Options.alphabeticalOrder:
         return T(context).a_z;
+      case Options.favorite:
+        return T(context).favorite;
     }
   }
 
-  void onTap(BuildContext context){
+  void onTap(BuildContext context) {
     switch (this) {
       case Options.lastSeen:
         return context.read<DashboardCubit>().fetchLastSeenFiles();
       case Options.alphabeticalOrder:
         return context.read<DashboardCubit>().fetchAlphabeticalOrderFiles();
+      case Options.favorite:
+        return context.read<DashboardCubit>().fetchFavoriteFiles();
     }
   }
 }

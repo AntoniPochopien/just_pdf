@@ -20,6 +20,8 @@ class OptionPills extends StatelessWidget {
                           Options.lastSeen == e ? true : false,
                       alphabeticalOrderFiles: (_) =>
                           Options.alphabeticalOrder == e ? true : false,
+                      favoriteFiles: (_) =>
+                          Options.favorite == e ? true : false,
                       orElse: () => false,
                     ),
                     text: e.getTitle(context)))

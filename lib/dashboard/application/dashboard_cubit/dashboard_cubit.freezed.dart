@@ -22,6 +22,7 @@ mixin _$DashboardState {
     required TResult Function(List<FileMetadata> lastSeenFiles) lastSeenFiles,
     required TResult Function(List<FileMetadata> alphabeticalFiles)
         alphabeticalOrderFiles,
+    required TResult Function(List<FileMetadata> favoriteFiles) favoriteFiles,
     required TResult Function(FileMetadata file, DashboardState? previousState)
         openPdf,
     required TResult Function(
@@ -36,6 +37,7 @@ mixin _$DashboardState {
     TResult? Function(List<FileMetadata> lastSeenFiles)? lastSeenFiles,
     TResult? Function(List<FileMetadata> alphabeticalFiles)?
         alphabeticalOrderFiles,
+    TResult? Function(List<FileMetadata> favoriteFiles)? favoriteFiles,
     TResult? Function(FileMetadata file, DashboardState? previousState)?
         openPdf,
     TResult? Function(
@@ -50,6 +52,7 @@ mixin _$DashboardState {
     TResult Function(List<FileMetadata> lastSeenFiles)? lastSeenFiles,
     TResult Function(List<FileMetadata> alphabeticalFiles)?
         alphabeticalOrderFiles,
+    TResult Function(List<FileMetadata> favoriteFiles)? favoriteFiles,
     TResult Function(FileMetadata file, DashboardState? previousState)? openPdf,
     TResult Function(
             List<FileMetadata> selectedFiles, List<FileMetadata> allFiles)?
@@ -64,6 +67,7 @@ mixin _$DashboardState {
     required TResult Function(_LastSeenFiles value) lastSeenFiles,
     required TResult Function(_AlphabeticalOrderFiles value)
         alphabeticalOrderFiles,
+    required TResult Function(_FavoriteFiles value) favoriteFiles,
     required TResult Function(_OpenPdf value) openPdf,
     required TResult Function(_FilesSelection value) filesSelection,
     required TResult Function(_NotPermitted value) notPermitted,
@@ -74,6 +78,7 @@ mixin _$DashboardState {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_LastSeenFiles value)? lastSeenFiles,
     TResult? Function(_AlphabeticalOrderFiles value)? alphabeticalOrderFiles,
+    TResult? Function(_FavoriteFiles value)? favoriteFiles,
     TResult? Function(_OpenPdf value)? openPdf,
     TResult? Function(_FilesSelection value)? filesSelection,
     TResult? Function(_NotPermitted value)? notPermitted,
@@ -84,6 +89,7 @@ mixin _$DashboardState {
     TResult Function(_Loading value)? loading,
     TResult Function(_LastSeenFiles value)? lastSeenFiles,
     TResult Function(_AlphabeticalOrderFiles value)? alphabeticalOrderFiles,
+    TResult Function(_FavoriteFiles value)? favoriteFiles,
     TResult Function(_OpenPdf value)? openPdf,
     TResult Function(_FilesSelection value)? filesSelection,
     TResult Function(_NotPermitted value)? notPermitted,
@@ -158,6 +164,7 @@ class _$LoadingImpl implements _Loading {
     required TResult Function(List<FileMetadata> lastSeenFiles) lastSeenFiles,
     required TResult Function(List<FileMetadata> alphabeticalFiles)
         alphabeticalOrderFiles,
+    required TResult Function(List<FileMetadata> favoriteFiles) favoriteFiles,
     required TResult Function(FileMetadata file, DashboardState? previousState)
         openPdf,
     required TResult Function(
@@ -175,6 +182,7 @@ class _$LoadingImpl implements _Loading {
     TResult? Function(List<FileMetadata> lastSeenFiles)? lastSeenFiles,
     TResult? Function(List<FileMetadata> alphabeticalFiles)?
         alphabeticalOrderFiles,
+    TResult? Function(List<FileMetadata> favoriteFiles)? favoriteFiles,
     TResult? Function(FileMetadata file, DashboardState? previousState)?
         openPdf,
     TResult? Function(
@@ -192,6 +200,7 @@ class _$LoadingImpl implements _Loading {
     TResult Function(List<FileMetadata> lastSeenFiles)? lastSeenFiles,
     TResult Function(List<FileMetadata> alphabeticalFiles)?
         alphabeticalOrderFiles,
+    TResult Function(List<FileMetadata> favoriteFiles)? favoriteFiles,
     TResult Function(FileMetadata file, DashboardState? previousState)? openPdf,
     TResult Function(
             List<FileMetadata> selectedFiles, List<FileMetadata> allFiles)?
@@ -212,6 +221,7 @@ class _$LoadingImpl implements _Loading {
     required TResult Function(_LastSeenFiles value) lastSeenFiles,
     required TResult Function(_AlphabeticalOrderFiles value)
         alphabeticalOrderFiles,
+    required TResult Function(_FavoriteFiles value) favoriteFiles,
     required TResult Function(_OpenPdf value) openPdf,
     required TResult Function(_FilesSelection value) filesSelection,
     required TResult Function(_NotPermitted value) notPermitted,
@@ -225,6 +235,7 @@ class _$LoadingImpl implements _Loading {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_LastSeenFiles value)? lastSeenFiles,
     TResult? Function(_AlphabeticalOrderFiles value)? alphabeticalOrderFiles,
+    TResult? Function(_FavoriteFiles value)? favoriteFiles,
     TResult? Function(_OpenPdf value)? openPdf,
     TResult? Function(_FilesSelection value)? filesSelection,
     TResult? Function(_NotPermitted value)? notPermitted,
@@ -238,6 +249,7 @@ class _$LoadingImpl implements _Loading {
     TResult Function(_Loading value)? loading,
     TResult Function(_LastSeenFiles value)? lastSeenFiles,
     TResult Function(_AlphabeticalOrderFiles value)? alphabeticalOrderFiles,
+    TResult Function(_FavoriteFiles value)? favoriteFiles,
     TResult Function(_OpenPdf value)? openPdf,
     TResult Function(_FilesSelection value)? filesSelection,
     TResult Function(_NotPermitted value)? notPermitted,
@@ -335,6 +347,7 @@ class _$LastSeenFilesImpl implements _LastSeenFiles {
     required TResult Function(List<FileMetadata> lastSeenFiles) lastSeenFiles,
     required TResult Function(List<FileMetadata> alphabeticalFiles)
         alphabeticalOrderFiles,
+    required TResult Function(List<FileMetadata> favoriteFiles) favoriteFiles,
     required TResult Function(FileMetadata file, DashboardState? previousState)
         openPdf,
     required TResult Function(
@@ -352,6 +365,7 @@ class _$LastSeenFilesImpl implements _LastSeenFiles {
     TResult? Function(List<FileMetadata> lastSeenFiles)? lastSeenFiles,
     TResult? Function(List<FileMetadata> alphabeticalFiles)?
         alphabeticalOrderFiles,
+    TResult? Function(List<FileMetadata> favoriteFiles)? favoriteFiles,
     TResult? Function(FileMetadata file, DashboardState? previousState)?
         openPdf,
     TResult? Function(
@@ -369,6 +383,7 @@ class _$LastSeenFilesImpl implements _LastSeenFiles {
     TResult Function(List<FileMetadata> lastSeenFiles)? lastSeenFiles,
     TResult Function(List<FileMetadata> alphabeticalFiles)?
         alphabeticalOrderFiles,
+    TResult Function(List<FileMetadata> favoriteFiles)? favoriteFiles,
     TResult Function(FileMetadata file, DashboardState? previousState)? openPdf,
     TResult Function(
             List<FileMetadata> selectedFiles, List<FileMetadata> allFiles)?
@@ -389,6 +404,7 @@ class _$LastSeenFilesImpl implements _LastSeenFiles {
     required TResult Function(_LastSeenFiles value) lastSeenFiles,
     required TResult Function(_AlphabeticalOrderFiles value)
         alphabeticalOrderFiles,
+    required TResult Function(_FavoriteFiles value) favoriteFiles,
     required TResult Function(_OpenPdf value) openPdf,
     required TResult Function(_FilesSelection value) filesSelection,
     required TResult Function(_NotPermitted value) notPermitted,
@@ -402,6 +418,7 @@ class _$LastSeenFilesImpl implements _LastSeenFiles {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_LastSeenFiles value)? lastSeenFiles,
     TResult? Function(_AlphabeticalOrderFiles value)? alphabeticalOrderFiles,
+    TResult? Function(_FavoriteFiles value)? favoriteFiles,
     TResult? Function(_OpenPdf value)? openPdf,
     TResult? Function(_FilesSelection value)? filesSelection,
     TResult? Function(_NotPermitted value)? notPermitted,
@@ -415,6 +432,7 @@ class _$LastSeenFilesImpl implements _LastSeenFiles {
     TResult Function(_Loading value)? loading,
     TResult Function(_LastSeenFiles value)? lastSeenFiles,
     TResult Function(_AlphabeticalOrderFiles value)? alphabeticalOrderFiles,
+    TResult Function(_FavoriteFiles value)? favoriteFiles,
     TResult Function(_OpenPdf value)? openPdf,
     TResult Function(_FilesSelection value)? filesSelection,
     TResult Function(_NotPermitted value)? notPermitted,
@@ -526,6 +544,7 @@ class _$AlphabeticalOrderFilesImpl implements _AlphabeticalOrderFiles {
     required TResult Function(List<FileMetadata> lastSeenFiles) lastSeenFiles,
     required TResult Function(List<FileMetadata> alphabeticalFiles)
         alphabeticalOrderFiles,
+    required TResult Function(List<FileMetadata> favoriteFiles) favoriteFiles,
     required TResult Function(FileMetadata file, DashboardState? previousState)
         openPdf,
     required TResult Function(
@@ -543,6 +562,7 @@ class _$AlphabeticalOrderFilesImpl implements _AlphabeticalOrderFiles {
     TResult? Function(List<FileMetadata> lastSeenFiles)? lastSeenFiles,
     TResult? Function(List<FileMetadata> alphabeticalFiles)?
         alphabeticalOrderFiles,
+    TResult? Function(List<FileMetadata> favoriteFiles)? favoriteFiles,
     TResult? Function(FileMetadata file, DashboardState? previousState)?
         openPdf,
     TResult? Function(
@@ -560,6 +580,7 @@ class _$AlphabeticalOrderFilesImpl implements _AlphabeticalOrderFiles {
     TResult Function(List<FileMetadata> lastSeenFiles)? lastSeenFiles,
     TResult Function(List<FileMetadata> alphabeticalFiles)?
         alphabeticalOrderFiles,
+    TResult Function(List<FileMetadata> favoriteFiles)? favoriteFiles,
     TResult Function(FileMetadata file, DashboardState? previousState)? openPdf,
     TResult Function(
             List<FileMetadata> selectedFiles, List<FileMetadata> allFiles)?
@@ -580,6 +601,7 @@ class _$AlphabeticalOrderFilesImpl implements _AlphabeticalOrderFiles {
     required TResult Function(_LastSeenFiles value) lastSeenFiles,
     required TResult Function(_AlphabeticalOrderFiles value)
         alphabeticalOrderFiles,
+    required TResult Function(_FavoriteFiles value) favoriteFiles,
     required TResult Function(_OpenPdf value) openPdf,
     required TResult Function(_FilesSelection value) filesSelection,
     required TResult Function(_NotPermitted value) notPermitted,
@@ -593,6 +615,7 @@ class _$AlphabeticalOrderFilesImpl implements _AlphabeticalOrderFiles {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_LastSeenFiles value)? lastSeenFiles,
     TResult? Function(_AlphabeticalOrderFiles value)? alphabeticalOrderFiles,
+    TResult? Function(_FavoriteFiles value)? favoriteFiles,
     TResult? Function(_OpenPdf value)? openPdf,
     TResult? Function(_FilesSelection value)? filesSelection,
     TResult? Function(_NotPermitted value)? notPermitted,
@@ -606,6 +629,7 @@ class _$AlphabeticalOrderFilesImpl implements _AlphabeticalOrderFiles {
     TResult Function(_Loading value)? loading,
     TResult Function(_LastSeenFiles value)? lastSeenFiles,
     TResult Function(_AlphabeticalOrderFiles value)? alphabeticalOrderFiles,
+    TResult Function(_FavoriteFiles value)? favoriteFiles,
     TResult Function(_OpenPdf value)? openPdf,
     TResult Function(_FilesSelection value)? filesSelection,
     TResult Function(_NotPermitted value)? notPermitted,
@@ -630,6 +654,198 @@ abstract class _AlphabeticalOrderFiles implements DashboardState {
   @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AlphabeticalOrderFilesImplCopyWith<_$AlphabeticalOrderFilesImpl>
       get copyWith => throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$FavoriteFilesImplCopyWith<$Res> {
+  factory _$$FavoriteFilesImplCopyWith(
+          _$FavoriteFilesImpl value, $Res Function(_$FavoriteFilesImpl) then) =
+      __$$FavoriteFilesImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<FileMetadata> favoriteFiles});
+}
+
+/// @nodoc
+class __$$FavoriteFilesImplCopyWithImpl<$Res>
+    extends _$DashboardStateCopyWithImpl<$Res, _$FavoriteFilesImpl>
+    implements _$$FavoriteFilesImplCopyWith<$Res> {
+  __$$FavoriteFilesImplCopyWithImpl(
+      _$FavoriteFilesImpl _value, $Res Function(_$FavoriteFilesImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of DashboardState
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? favoriteFiles = null,
+  }) {
+    return _then(_$FavoriteFilesImpl(
+      favoriteFiles: null == favoriteFiles
+          ? _value._favoriteFiles
+          : favoriteFiles // ignore: cast_nullable_to_non_nullable
+              as List<FileMetadata>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$FavoriteFilesImpl implements _FavoriteFiles {
+  const _$FavoriteFilesImpl({final List<FileMetadata> favoriteFiles = const []})
+      : _favoriteFiles = favoriteFiles;
+
+  final List<FileMetadata> _favoriteFiles;
+  @override
+  @JsonKey()
+  List<FileMetadata> get favoriteFiles {
+    if (_favoriteFiles is EqualUnmodifiableListView) return _favoriteFiles;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_favoriteFiles);
+  }
+
+  @override
+  String toString() {
+    return 'DashboardState.favoriteFiles(favoriteFiles: $favoriteFiles)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$FavoriteFilesImpl &&
+            const DeepCollectionEquality()
+                .equals(other._favoriteFiles, _favoriteFiles));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType, const DeepCollectionEquality().hash(_favoriteFiles));
+
+  /// Create a copy of DashboardState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$FavoriteFilesImplCopyWith<_$FavoriteFilesImpl> get copyWith =>
+      __$$FavoriteFilesImplCopyWithImpl<_$FavoriteFilesImpl>(this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loading,
+    required TResult Function(List<FileMetadata> lastSeenFiles) lastSeenFiles,
+    required TResult Function(List<FileMetadata> alphabeticalFiles)
+        alphabeticalOrderFiles,
+    required TResult Function(List<FileMetadata> favoriteFiles) favoriteFiles,
+    required TResult Function(FileMetadata file, DashboardState? previousState)
+        openPdf,
+    required TResult Function(
+            List<FileMetadata> selectedFiles, List<FileMetadata> allFiles)
+        filesSelection,
+    required TResult Function() notPermitted,
+  }) {
+    return favoriteFiles(this.favoriteFiles);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? loading,
+    TResult? Function(List<FileMetadata> lastSeenFiles)? lastSeenFiles,
+    TResult? Function(List<FileMetadata> alphabeticalFiles)?
+        alphabeticalOrderFiles,
+    TResult? Function(List<FileMetadata> favoriteFiles)? favoriteFiles,
+    TResult? Function(FileMetadata file, DashboardState? previousState)?
+        openPdf,
+    TResult? Function(
+            List<FileMetadata> selectedFiles, List<FileMetadata> allFiles)?
+        filesSelection,
+    TResult? Function()? notPermitted,
+  }) {
+    return favoriteFiles?.call(this.favoriteFiles);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function(List<FileMetadata> lastSeenFiles)? lastSeenFiles,
+    TResult Function(List<FileMetadata> alphabeticalFiles)?
+        alphabeticalOrderFiles,
+    TResult Function(List<FileMetadata> favoriteFiles)? favoriteFiles,
+    TResult Function(FileMetadata file, DashboardState? previousState)? openPdf,
+    TResult Function(
+            List<FileMetadata> selectedFiles, List<FileMetadata> allFiles)?
+        filesSelection,
+    TResult Function()? notPermitted,
+    required TResult orElse(),
+  }) {
+    if (favoriteFiles != null) {
+      return favoriteFiles(this.favoriteFiles);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_LastSeenFiles value) lastSeenFiles,
+    required TResult Function(_AlphabeticalOrderFiles value)
+        alphabeticalOrderFiles,
+    required TResult Function(_FavoriteFiles value) favoriteFiles,
+    required TResult Function(_OpenPdf value) openPdf,
+    required TResult Function(_FilesSelection value) filesSelection,
+    required TResult Function(_NotPermitted value) notPermitted,
+  }) {
+    return favoriteFiles(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_LastSeenFiles value)? lastSeenFiles,
+    TResult? Function(_AlphabeticalOrderFiles value)? alphabeticalOrderFiles,
+    TResult? Function(_FavoriteFiles value)? favoriteFiles,
+    TResult? Function(_OpenPdf value)? openPdf,
+    TResult? Function(_FilesSelection value)? filesSelection,
+    TResult? Function(_NotPermitted value)? notPermitted,
+  }) {
+    return favoriteFiles?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Loading value)? loading,
+    TResult Function(_LastSeenFiles value)? lastSeenFiles,
+    TResult Function(_AlphabeticalOrderFiles value)? alphabeticalOrderFiles,
+    TResult Function(_FavoriteFiles value)? favoriteFiles,
+    TResult Function(_OpenPdf value)? openPdf,
+    TResult Function(_FilesSelection value)? filesSelection,
+    TResult Function(_NotPermitted value)? notPermitted,
+    required TResult orElse(),
+  }) {
+    if (favoriteFiles != null) {
+      return favoriteFiles(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _FavoriteFiles implements DashboardState {
+  const factory _FavoriteFiles({final List<FileMetadata> favoriteFiles}) =
+      _$FavoriteFilesImpl;
+
+  List<FileMetadata> get favoriteFiles;
+
+  /// Create a copy of DashboardState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$FavoriteFilesImplCopyWith<_$FavoriteFilesImpl> get copyWith =>
+      throw _privateConstructorUsedError;
 }
 
 /// @nodoc
@@ -729,6 +945,7 @@ class _$OpenPdfImpl implements _OpenPdf {
     required TResult Function(List<FileMetadata> lastSeenFiles) lastSeenFiles,
     required TResult Function(List<FileMetadata> alphabeticalFiles)
         alphabeticalOrderFiles,
+    required TResult Function(List<FileMetadata> favoriteFiles) favoriteFiles,
     required TResult Function(FileMetadata file, DashboardState? previousState)
         openPdf,
     required TResult Function(
@@ -746,6 +963,7 @@ class _$OpenPdfImpl implements _OpenPdf {
     TResult? Function(List<FileMetadata> lastSeenFiles)? lastSeenFiles,
     TResult? Function(List<FileMetadata> alphabeticalFiles)?
         alphabeticalOrderFiles,
+    TResult? Function(List<FileMetadata> favoriteFiles)? favoriteFiles,
     TResult? Function(FileMetadata file, DashboardState? previousState)?
         openPdf,
     TResult? Function(
@@ -763,6 +981,7 @@ class _$OpenPdfImpl implements _OpenPdf {
     TResult Function(List<FileMetadata> lastSeenFiles)? lastSeenFiles,
     TResult Function(List<FileMetadata> alphabeticalFiles)?
         alphabeticalOrderFiles,
+    TResult Function(List<FileMetadata> favoriteFiles)? favoriteFiles,
     TResult Function(FileMetadata file, DashboardState? previousState)? openPdf,
     TResult Function(
             List<FileMetadata> selectedFiles, List<FileMetadata> allFiles)?
@@ -783,6 +1002,7 @@ class _$OpenPdfImpl implements _OpenPdf {
     required TResult Function(_LastSeenFiles value) lastSeenFiles,
     required TResult Function(_AlphabeticalOrderFiles value)
         alphabeticalOrderFiles,
+    required TResult Function(_FavoriteFiles value) favoriteFiles,
     required TResult Function(_OpenPdf value) openPdf,
     required TResult Function(_FilesSelection value) filesSelection,
     required TResult Function(_NotPermitted value) notPermitted,
@@ -796,6 +1016,7 @@ class _$OpenPdfImpl implements _OpenPdf {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_LastSeenFiles value)? lastSeenFiles,
     TResult? Function(_AlphabeticalOrderFiles value)? alphabeticalOrderFiles,
+    TResult? Function(_FavoriteFiles value)? favoriteFiles,
     TResult? Function(_OpenPdf value)? openPdf,
     TResult? Function(_FilesSelection value)? filesSelection,
     TResult? Function(_NotPermitted value)? notPermitted,
@@ -809,6 +1030,7 @@ class _$OpenPdfImpl implements _OpenPdf {
     TResult Function(_Loading value)? loading,
     TResult Function(_LastSeenFiles value)? lastSeenFiles,
     TResult Function(_AlphabeticalOrderFiles value)? alphabeticalOrderFiles,
+    TResult Function(_FavoriteFiles value)? favoriteFiles,
     TResult Function(_OpenPdf value)? openPdf,
     TResult Function(_FilesSelection value)? filesSelection,
     TResult Function(_NotPermitted value)? notPermitted,
@@ -936,6 +1158,7 @@ class _$FilesSelectionImpl implements _FilesSelection {
     required TResult Function(List<FileMetadata> lastSeenFiles) lastSeenFiles,
     required TResult Function(List<FileMetadata> alphabeticalFiles)
         alphabeticalOrderFiles,
+    required TResult Function(List<FileMetadata> favoriteFiles) favoriteFiles,
     required TResult Function(FileMetadata file, DashboardState? previousState)
         openPdf,
     required TResult Function(
@@ -953,6 +1176,7 @@ class _$FilesSelectionImpl implements _FilesSelection {
     TResult? Function(List<FileMetadata> lastSeenFiles)? lastSeenFiles,
     TResult? Function(List<FileMetadata> alphabeticalFiles)?
         alphabeticalOrderFiles,
+    TResult? Function(List<FileMetadata> favoriteFiles)? favoriteFiles,
     TResult? Function(FileMetadata file, DashboardState? previousState)?
         openPdf,
     TResult? Function(
@@ -970,6 +1194,7 @@ class _$FilesSelectionImpl implements _FilesSelection {
     TResult Function(List<FileMetadata> lastSeenFiles)? lastSeenFiles,
     TResult Function(List<FileMetadata> alphabeticalFiles)?
         alphabeticalOrderFiles,
+    TResult Function(List<FileMetadata> favoriteFiles)? favoriteFiles,
     TResult Function(FileMetadata file, DashboardState? previousState)? openPdf,
     TResult Function(
             List<FileMetadata> selectedFiles, List<FileMetadata> allFiles)?
@@ -990,6 +1215,7 @@ class _$FilesSelectionImpl implements _FilesSelection {
     required TResult Function(_LastSeenFiles value) lastSeenFiles,
     required TResult Function(_AlphabeticalOrderFiles value)
         alphabeticalOrderFiles,
+    required TResult Function(_FavoriteFiles value) favoriteFiles,
     required TResult Function(_OpenPdf value) openPdf,
     required TResult Function(_FilesSelection value) filesSelection,
     required TResult Function(_NotPermitted value) notPermitted,
@@ -1003,6 +1229,7 @@ class _$FilesSelectionImpl implements _FilesSelection {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_LastSeenFiles value)? lastSeenFiles,
     TResult? Function(_AlphabeticalOrderFiles value)? alphabeticalOrderFiles,
+    TResult? Function(_FavoriteFiles value)? favoriteFiles,
     TResult? Function(_OpenPdf value)? openPdf,
     TResult? Function(_FilesSelection value)? filesSelection,
     TResult? Function(_NotPermitted value)? notPermitted,
@@ -1016,6 +1243,7 @@ class _$FilesSelectionImpl implements _FilesSelection {
     TResult Function(_Loading value)? loading,
     TResult Function(_LastSeenFiles value)? lastSeenFiles,
     TResult Function(_AlphabeticalOrderFiles value)? alphabeticalOrderFiles,
+    TResult Function(_FavoriteFiles value)? favoriteFiles,
     TResult Function(_OpenPdf value)? openPdf,
     TResult Function(_FilesSelection value)? filesSelection,
     TResult Function(_NotPermitted value)? notPermitted,
@@ -1088,6 +1316,7 @@ class _$NotPermittedImpl implements _NotPermitted {
     required TResult Function(List<FileMetadata> lastSeenFiles) lastSeenFiles,
     required TResult Function(List<FileMetadata> alphabeticalFiles)
         alphabeticalOrderFiles,
+    required TResult Function(List<FileMetadata> favoriteFiles) favoriteFiles,
     required TResult Function(FileMetadata file, DashboardState? previousState)
         openPdf,
     required TResult Function(
@@ -1105,6 +1334,7 @@ class _$NotPermittedImpl implements _NotPermitted {
     TResult? Function(List<FileMetadata> lastSeenFiles)? lastSeenFiles,
     TResult? Function(List<FileMetadata> alphabeticalFiles)?
         alphabeticalOrderFiles,
+    TResult? Function(List<FileMetadata> favoriteFiles)? favoriteFiles,
     TResult? Function(FileMetadata file, DashboardState? previousState)?
         openPdf,
     TResult? Function(
@@ -1122,6 +1352,7 @@ class _$NotPermittedImpl implements _NotPermitted {
     TResult Function(List<FileMetadata> lastSeenFiles)? lastSeenFiles,
     TResult Function(List<FileMetadata> alphabeticalFiles)?
         alphabeticalOrderFiles,
+    TResult Function(List<FileMetadata> favoriteFiles)? favoriteFiles,
     TResult Function(FileMetadata file, DashboardState? previousState)? openPdf,
     TResult Function(
             List<FileMetadata> selectedFiles, List<FileMetadata> allFiles)?
@@ -1142,6 +1373,7 @@ class _$NotPermittedImpl implements _NotPermitted {
     required TResult Function(_LastSeenFiles value) lastSeenFiles,
     required TResult Function(_AlphabeticalOrderFiles value)
         alphabeticalOrderFiles,
+    required TResult Function(_FavoriteFiles value) favoriteFiles,
     required TResult Function(_OpenPdf value) openPdf,
     required TResult Function(_FilesSelection value) filesSelection,
     required TResult Function(_NotPermitted value) notPermitted,
@@ -1155,6 +1387,7 @@ class _$NotPermittedImpl implements _NotPermitted {
     TResult? Function(_Loading value)? loading,
     TResult? Function(_LastSeenFiles value)? lastSeenFiles,
     TResult? Function(_AlphabeticalOrderFiles value)? alphabeticalOrderFiles,
+    TResult? Function(_FavoriteFiles value)? favoriteFiles,
     TResult? Function(_OpenPdf value)? openPdf,
     TResult? Function(_FilesSelection value)? filesSelection,
     TResult? Function(_NotPermitted value)? notPermitted,
@@ -1168,6 +1401,7 @@ class _$NotPermittedImpl implements _NotPermitted {
     TResult Function(_Loading value)? loading,
     TResult Function(_LastSeenFiles value)? lastSeenFiles,
     TResult Function(_AlphabeticalOrderFiles value)? alphabeticalOrderFiles,
+    TResult Function(_FavoriteFiles value)? favoriteFiles,
     TResult Function(_OpenPdf value)? openPdf,
     TResult Function(_FilesSelection value)? filesSelection,
     TResult Function(_NotPermitted value)? notPermitted,

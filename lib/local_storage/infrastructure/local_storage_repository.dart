@@ -39,6 +39,23 @@ class LocalStorageRepository implements ILocalStorageRepository {
   }
 
   @override
+  Future<void> saveFavorite(FileMetadata fileMetadata) async {
+    final allFiles = getFiles();
+    final existingFileIndex = allFiles.indexWhere((file) =>
+        file.id == fileMetadata.id ||
+        (file.getName == fileMetadata.getName &&
+            file.sizeInBytes == fileMetadata.sizeInBytes));
+
+    if (existingFileIndex != -1) {
+      final existingFile =
+          allFiles[existingFileIndex].copyWith(favorite: fileMetadata.favorite);
+      allFiles[existingFileIndex] = existingFile;
+    }
+
+    await box.put('files', allFiles);
+  }
+
+  @override
   List<FileMetadata> getFiles() {
     final List<dynamic>? files = box.get('files');
     return files == null ? [] : files.cast<FileMetadata>();

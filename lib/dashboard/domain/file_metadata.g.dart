@@ -22,13 +22,14 @@ class FileMetadataAdapter extends TypeAdapter<FileMetadata> {
       lastViewed: fields[2] as DateTime,
       sizeInBytes: fields[3] as int,
       name: fields[4] as String,
+      favorite: fields[5] == null ? false : fields[5] as bool,
     );
   }
 
   @override
   void write(BinaryWriter writer, FileMetadata obj) {
     writer
-      ..writeByte(5)
+      ..writeByte(6)
       ..writeByte(0)
       ..write(obj.id)
       ..writeByte(1)
@@ -38,7 +39,9 @@ class FileMetadataAdapter extends TypeAdapter<FileMetadata> {
       ..writeByte(3)
       ..write(obj.sizeInBytes)
       ..writeByte(4)
-      ..write(obj.name);
+      ..write(obj.name)
+      ..writeByte(5)
+      ..write(obj.favorite);
   }
 
   @override

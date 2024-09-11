@@ -17,6 +17,8 @@ class OptionsAdapter extends TypeAdapter<Options> {
         return Options.lastSeen;
       case 1:
         return Options.alphabeticalOrder;
+      case 2:
+        return Options.favorite;
       default:
         return Options.lastSeen;
     }
@@ -30,6 +32,9 @@ class OptionsAdapter extends TypeAdapter<Options> {
         break;
       case Options.alphabeticalOrder:
         writer.writeByte(1);
+        break;
+      case Options.favorite:
+        writer.writeByte(2);
         break;
     }
   }

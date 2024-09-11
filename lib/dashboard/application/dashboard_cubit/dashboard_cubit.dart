@@ -36,6 +36,8 @@ class DashboardCubit extends Cubit<DashboardState> {
             fetchAlphabeticalOrderFiles();
           case Options.lastSeen:
             fetchLastSeenFiles();
+          case Options.favorite:
+            fetchFavoriteFiles();
         }
       }
     } else {
@@ -126,12 +128,25 @@ class DashboardCubit extends Cubit<DashboardState> {
     emit(DashboardState.alphabeticalOrderFiles(alphabeticalFiles: allFiles));
   }
 
+  void fetchFavoriteFiles() {
+    localStorageRepository.saveLastOption(Options.favorite);
+    final allFiles = List<FileMetadata>.from(localStorageRepository.getFiles());
+
+    //take only favorite files
+
+    final favoriteFiles =
+        allFiles.where((element) => element.favorite).toList();
+
+    emit(DashboardState.favoriteFiles(favoriteFiles: favoriteFiles));
+  }
+
   void reloadFiles() {
     if (state is _OpenPdf) {
       final s = state as _OpenPdf;
       s.previousState?.mapOrNull(
         lastSeenFiles: (_) => fetchLastSeenFiles(),
         alphabeticalOrderFiles: (_) => fetchAlphabeticalOrderFiles(),
+        favoriteFiles: (_) => fetchFavoriteFiles(),
       );
     }
   }
@@ -159,5 +174,15 @@ class DashboardCubit extends Cubit<DashboardState> {
       }
       emit(s.copyWith(selectedFiles: selectedFiles));
     }
+  }
+
+  void toggleFavorite(FileMetadata file) async {
+    final updatedFile = file.copyWith(favorite: !file.favorite);
+    await localStorageRepository.saveFavorite(updatedFile);
+    state.mapOrNull(
+      lastSeenFiles: (_) => fetchLastSeenFiles(),
+      alphabeticalOrderFiles: (_) => fetchAlphabeticalOrderFiles(),
+      favoriteFiles: (_) => fetchFavoriteFiles(),
+    );
   }
 }
