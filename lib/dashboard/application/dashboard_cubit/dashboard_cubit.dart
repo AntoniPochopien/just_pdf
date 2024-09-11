@@ -82,15 +82,23 @@ class DashboardCubit extends Cubit<DashboardState> {
     emit(DashboardState.openPdf(file: fileMetadata, previousState: state));
   }
 
-  void deleteFile(FileMetadata fileMetadata) async {
-    await localStorageRepository.deleteFile(fileMetadata.id);
+  void deleteFiles(List<FileMetadata> fileMetadataList) async {
+    await Future.wait(fileMetadataList
+        .map((file) => localStorageRepository.deleteFile(file.id)));
+
     state.whenOrNull(
-      lastSeenFiles: (_) => fetchLastSeenFiles(),
-      alphabeticalOrderFiles: (_) => fetchAlphabeticalOrderFiles(),
-    );
+        lastSeenFiles: (_) => fetchLastSeenFiles(),
+        alphabeticalOrderFiles: (_) => fetchAlphabeticalOrderFiles(),
+        filesSelection: (selectedFiles, allFiles) {
+          final updatedFiles = allFiles
+              .where((file) => !fileMetadataList.contains(file))
+              .toList();
+          emit(DashboardState.filesSelection(
+              selectedFiles: [], allFiles: updatedFiles));
+        });
   }
 
-  void onFileTap(FileMetadata fileMetadata) async {
+  void openFile(FileMetadata fileMetadata) async {
     await localStorageRepository.saveFile(fileMetadata);
     emit(DashboardState.openPdf(file: fileMetadata, previousState: state));
   }
@@ -131,6 +139,25 @@ class DashboardCubit extends Cubit<DashboardState> {
   void printFile(FileMetadata fileMetadata) async =>
       await printingRepository.print(fileMetadata);
 
-  void share(FileMetadata fileMetadata) async =>
-      await printingRepository.share(fileMetadata);
+  void share(List<FileMetadata> fileMetadataList) async =>
+      await printingRepository.share(fileMetadataList);
+
+  void startFilesSelection(
+          {required FileMetadata selectedFile,
+          required List<FileMetadata> allFiles}) =>
+      emit(DashboardState.filesSelection(
+          selectedFiles: [selectedFile], allFiles: allFiles));
+
+  void selectFile(FileMetadata selectedFile) {
+    if (state is _FilesSelection) {
+      final s = state as _FilesSelection;
+      final selectedFiles = List<FileMetadata>.from(s.selectedFiles);
+      if (selectedFiles.contains(selectedFile)) {
+        selectedFiles.remove(selectedFile);
+      } else {
+        selectedFiles.add(selectedFile);
+      }
+      emit(s.copyWith(selectedFiles: selectedFiles));
+    }
+  }
 }

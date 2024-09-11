@@ -5,6 +5,6 @@ import 'package:just_pdf/dashboard/domain/file_metadata.dart';
 abstract class IPrintingRepository {
 
   Future<Either<Failure, Unit>> print(FileMetadata fileMetadata);
-  Future<Either<Failure, Unit>> share(FileMetadata fileMetadata);
+  Future<Either<Failure, Unit>> share(List<FileMetadata> fileMetadataList);
 
 }

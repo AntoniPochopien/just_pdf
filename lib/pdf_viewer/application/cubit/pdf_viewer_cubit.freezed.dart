@@ -33,6 +33,9 @@ class _$PdfViewerStateCopyWithImpl<$Res, $Val extends PdfViewerState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of PdfViewerState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -49,6 +52,9 @@ class __$$PdfViewerStateImplCopyWithImpl<$Res>
   __$$PdfViewerStateImplCopyWithImpl(
       _$PdfViewerStateImpl _value, $Res Function(_$PdfViewerStateImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of PdfViewerState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

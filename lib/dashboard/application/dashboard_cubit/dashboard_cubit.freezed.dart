@@ -24,6 +24,9 @@ mixin _$DashboardState {
         alphabeticalOrderFiles,
     required TResult Function(FileMetadata file, DashboardState? previousState)
         openPdf,
+    required TResult Function(
+            List<FileMetadata> selectedFiles, List<FileMetadata> allFiles)
+        filesSelection,
     required TResult Function() notPermitted,
   }) =>
       throw _privateConstructorUsedError;
@@ -35,6 +38,9 @@ mixin _$DashboardState {
         alphabeticalOrderFiles,
     TResult? Function(FileMetadata file, DashboardState? previousState)?
         openPdf,
+    TResult? Function(
+            List<FileMetadata> selectedFiles, List<FileMetadata> allFiles)?
+        filesSelection,
     TResult? Function()? notPermitted,
   }) =>
       throw _privateConstructorUsedError;
@@ -45,6 +51,9 @@ mixin _$DashboardState {
     TResult Function(List<FileMetadata> alphabeticalFiles)?
         alphabeticalOrderFiles,
     TResult Function(FileMetadata file, DashboardState? previousState)? openPdf,
+    TResult Function(
+            List<FileMetadata> selectedFiles, List<FileMetadata> allFiles)?
+        filesSelection,
     TResult Function()? notPermitted,
     required TResult orElse(),
   }) =>
@@ -56,6 +65,7 @@ mixin _$DashboardState {
     required TResult Function(_AlphabeticalOrderFiles value)
         alphabeticalOrderFiles,
     required TResult Function(_OpenPdf value) openPdf,
+    required TResult Function(_FilesSelection value) filesSelection,
     required TResult Function(_NotPermitted value) notPermitted,
   }) =>
       throw _privateConstructorUsedError;
@@ -65,6 +75,7 @@ mixin _$DashboardState {
     TResult? Function(_LastSeenFiles value)? lastSeenFiles,
     TResult? Function(_AlphabeticalOrderFiles value)? alphabeticalOrderFiles,
     TResult? Function(_OpenPdf value)? openPdf,
+    TResult? Function(_FilesSelection value)? filesSelection,
     TResult? Function(_NotPermitted value)? notPermitted,
   }) =>
       throw _privateConstructorUsedError;
@@ -74,6 +85,7 @@ mixin _$DashboardState {
     TResult Function(_LastSeenFiles value)? lastSeenFiles,
     TResult Function(_AlphabeticalOrderFiles value)? alphabeticalOrderFiles,
     TResult Function(_OpenPdf value)? openPdf,
+    TResult Function(_FilesSelection value)? filesSelection,
     TResult Function(_NotPermitted value)? notPermitted,
     required TResult orElse(),
   }) =>
@@ -96,6 +108,9 @@ class _$DashboardStateCopyWithImpl<$Res, $Val extends DashboardState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
+
+  /// Create a copy of DashboardState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -112,6 +127,9 @@ class __$$LoadingImplCopyWithImpl<$Res>
   __$$LoadingImplCopyWithImpl(
       _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of DashboardState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -142,6 +160,9 @@ class _$LoadingImpl implements _Loading {
         alphabeticalOrderFiles,
     required TResult Function(FileMetadata file, DashboardState? previousState)
         openPdf,
+    required TResult Function(
+            List<FileMetadata> selectedFiles, List<FileMetadata> allFiles)
+        filesSelection,
     required TResult Function() notPermitted,
   }) {
     return loading();
@@ -156,6 +177,9 @@ class _$LoadingImpl implements _Loading {
         alphabeticalOrderFiles,
     TResult? Function(FileMetadata file, DashboardState? previousState)?
         openPdf,
+    TResult? Function(
+            List<FileMetadata> selectedFiles, List<FileMetadata> allFiles)?
+        filesSelection,
     TResult? Function()? notPermitted,
   }) {
     return loading?.call();
@@ -169,6 +193,9 @@ class _$LoadingImpl implements _Loading {
     TResult Function(List<FileMetadata> alphabeticalFiles)?
         alphabeticalOrderFiles,
     TResult Function(FileMetadata file, DashboardState? previousState)? openPdf,
+    TResult Function(
+            List<FileMetadata> selectedFiles, List<FileMetadata> allFiles)?
+        filesSelection,
     TResult Function()? notPermitted,
     required TResult orElse(),
   }) {
@@ -186,6 +213,7 @@ class _$LoadingImpl implements _Loading {
     required TResult Function(_AlphabeticalOrderFiles value)
         alphabeticalOrderFiles,
     required TResult Function(_OpenPdf value) openPdf,
+    required TResult Function(_FilesSelection value) filesSelection,
     required TResult Function(_NotPermitted value) notPermitted,
   }) {
     return loading(this);
@@ -198,6 +226,7 @@ class _$LoadingImpl implements _Loading {
     TResult? Function(_LastSeenFiles value)? lastSeenFiles,
     TResult? Function(_AlphabeticalOrderFiles value)? alphabeticalOrderFiles,
     TResult? Function(_OpenPdf value)? openPdf,
+    TResult? Function(_FilesSelection value)? filesSelection,
     TResult? Function(_NotPermitted value)? notPermitted,
   }) {
     return loading?.call(this);
@@ -210,6 +239,7 @@ class _$LoadingImpl implements _Loading {
     TResult Function(_LastSeenFiles value)? lastSeenFiles,
     TResult Function(_AlphabeticalOrderFiles value)? alphabeticalOrderFiles,
     TResult Function(_OpenPdf value)? openPdf,
+    TResult Function(_FilesSelection value)? filesSelection,
     TResult Function(_NotPermitted value)? notPermitted,
     required TResult orElse(),
   }) {
@@ -241,6 +271,8 @@ class __$$LastSeenFilesImplCopyWithImpl<$Res>
       _$LastSeenFilesImpl _value, $Res Function(_$LastSeenFilesImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of DashboardState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -288,7 +320,9 @@ class _$LastSeenFilesImpl implements _LastSeenFiles {
   int get hashCode => Object.hash(
       runtimeType, const DeepCollectionEquality().hash(_lastSeenFiles));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DashboardState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$LastSeenFilesImplCopyWith<_$LastSeenFilesImpl> get copyWith =>
@@ -303,6 +337,9 @@ class _$LastSeenFilesImpl implements _LastSeenFiles {
         alphabeticalOrderFiles,
     required TResult Function(FileMetadata file, DashboardState? previousState)
         openPdf,
+    required TResult Function(
+            List<FileMetadata> selectedFiles, List<FileMetadata> allFiles)
+        filesSelection,
     required TResult Function() notPermitted,
   }) {
     return lastSeenFiles(this.lastSeenFiles);
@@ -317,6 +354,9 @@ class _$LastSeenFilesImpl implements _LastSeenFiles {
         alphabeticalOrderFiles,
     TResult? Function(FileMetadata file, DashboardState? previousState)?
         openPdf,
+    TResult? Function(
+            List<FileMetadata> selectedFiles, List<FileMetadata> allFiles)?
+        filesSelection,
     TResult? Function()? notPermitted,
   }) {
     return lastSeenFiles?.call(this.lastSeenFiles);
@@ -330,6 +370,9 @@ class _$LastSeenFilesImpl implements _LastSeenFiles {
     TResult Function(List<FileMetadata> alphabeticalFiles)?
         alphabeticalOrderFiles,
     TResult Function(FileMetadata file, DashboardState? previousState)? openPdf,
+    TResult Function(
+            List<FileMetadata> selectedFiles, List<FileMetadata> allFiles)?
+        filesSelection,
     TResult Function()? notPermitted,
     required TResult orElse(),
   }) {
@@ -347,6 +390,7 @@ class _$LastSeenFilesImpl implements _LastSeenFiles {
     required TResult Function(_AlphabeticalOrderFiles value)
         alphabeticalOrderFiles,
     required TResult Function(_OpenPdf value) openPdf,
+    required TResult Function(_FilesSelection value) filesSelection,
     required TResult Function(_NotPermitted value) notPermitted,
   }) {
     return lastSeenFiles(this);
@@ -359,6 +403,7 @@ class _$LastSeenFilesImpl implements _LastSeenFiles {
     TResult? Function(_LastSeenFiles value)? lastSeenFiles,
     TResult? Function(_AlphabeticalOrderFiles value)? alphabeticalOrderFiles,
     TResult? Function(_OpenPdf value)? openPdf,
+    TResult? Function(_FilesSelection value)? filesSelection,
     TResult? Function(_NotPermitted value)? notPermitted,
   }) {
     return lastSeenFiles?.call(this);
@@ -371,6 +416,7 @@ class _$LastSeenFilesImpl implements _LastSeenFiles {
     TResult Function(_LastSeenFiles value)? lastSeenFiles,
     TResult Function(_AlphabeticalOrderFiles value)? alphabeticalOrderFiles,
     TResult Function(_OpenPdf value)? openPdf,
+    TResult Function(_FilesSelection value)? filesSelection,
     TResult Function(_NotPermitted value)? notPermitted,
     required TResult orElse(),
   }) {
@@ -386,7 +432,10 @@ abstract class _LastSeenFiles implements DashboardState {
       _$LastSeenFilesImpl;
 
   List<FileMetadata> get lastSeenFiles;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of DashboardState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$LastSeenFilesImplCopyWith<_$LastSeenFilesImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -410,6 +459,8 @@ class __$$AlphabeticalOrderFilesImplCopyWithImpl<$Res>
       $Res Function(_$AlphabeticalOrderFilesImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of DashboardState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -459,7 +510,9 @@ class _$AlphabeticalOrderFilesImpl implements _AlphabeticalOrderFiles {
   int get hashCode => Object.hash(
       runtimeType, const DeepCollectionEquality().hash(_alphabeticalFiles));
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DashboardState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$AlphabeticalOrderFilesImplCopyWith<_$AlphabeticalOrderFilesImpl>
@@ -475,6 +528,9 @@ class _$AlphabeticalOrderFilesImpl implements _AlphabeticalOrderFiles {
         alphabeticalOrderFiles,
     required TResult Function(FileMetadata file, DashboardState? previousState)
         openPdf,
+    required TResult Function(
+            List<FileMetadata> selectedFiles, List<FileMetadata> allFiles)
+        filesSelection,
     required TResult Function() notPermitted,
   }) {
     return alphabeticalOrderFiles(alphabeticalFiles);
@@ -489,6 +545,9 @@ class _$AlphabeticalOrderFilesImpl implements _AlphabeticalOrderFiles {
         alphabeticalOrderFiles,
     TResult? Function(FileMetadata file, DashboardState? previousState)?
         openPdf,
+    TResult? Function(
+            List<FileMetadata> selectedFiles, List<FileMetadata> allFiles)?
+        filesSelection,
     TResult? Function()? notPermitted,
   }) {
     return alphabeticalOrderFiles?.call(alphabeticalFiles);
@@ -502,6 +561,9 @@ class _$AlphabeticalOrderFilesImpl implements _AlphabeticalOrderFiles {
     TResult Function(List<FileMetadata> alphabeticalFiles)?
         alphabeticalOrderFiles,
     TResult Function(FileMetadata file, DashboardState? previousState)? openPdf,
+    TResult Function(
+            List<FileMetadata> selectedFiles, List<FileMetadata> allFiles)?
+        filesSelection,
     TResult Function()? notPermitted,
     required TResult orElse(),
   }) {
@@ -519,6 +581,7 @@ class _$AlphabeticalOrderFilesImpl implements _AlphabeticalOrderFiles {
     required TResult Function(_AlphabeticalOrderFiles value)
         alphabeticalOrderFiles,
     required TResult Function(_OpenPdf value) openPdf,
+    required TResult Function(_FilesSelection value) filesSelection,
     required TResult Function(_NotPermitted value) notPermitted,
   }) {
     return alphabeticalOrderFiles(this);
@@ -531,6 +594,7 @@ class _$AlphabeticalOrderFilesImpl implements _AlphabeticalOrderFiles {
     TResult? Function(_LastSeenFiles value)? lastSeenFiles,
     TResult? Function(_AlphabeticalOrderFiles value)? alphabeticalOrderFiles,
     TResult? Function(_OpenPdf value)? openPdf,
+    TResult? Function(_FilesSelection value)? filesSelection,
     TResult? Function(_NotPermitted value)? notPermitted,
   }) {
     return alphabeticalOrderFiles?.call(this);
@@ -543,6 +607,7 @@ class _$AlphabeticalOrderFilesImpl implements _AlphabeticalOrderFiles {
     TResult Function(_LastSeenFiles value)? lastSeenFiles,
     TResult Function(_AlphabeticalOrderFiles value)? alphabeticalOrderFiles,
     TResult Function(_OpenPdf value)? openPdf,
+    TResult Function(_FilesSelection value)? filesSelection,
     TResult Function(_NotPermitted value)? notPermitted,
     required TResult orElse(),
   }) {
@@ -559,7 +624,10 @@ abstract class _AlphabeticalOrderFiles implements DashboardState {
       _$AlphabeticalOrderFilesImpl;
 
   List<FileMetadata> get alphabeticalFiles;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of DashboardState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$AlphabeticalOrderFilesImplCopyWith<_$AlphabeticalOrderFilesImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -583,6 +651,8 @@ class __$$OpenPdfImplCopyWithImpl<$Res>
       _$OpenPdfImpl _value, $Res Function(_$OpenPdfImpl) _then)
       : super(_value, _then);
 
+  /// Create a copy of DashboardState
+  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -601,6 +671,8 @@ class __$$OpenPdfImplCopyWithImpl<$Res>
     ));
   }
 
+  /// Create a copy of DashboardState
+  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $DashboardStateCopyWith<$Res>? get previousState {
@@ -642,7 +714,9 @@ class _$OpenPdfImpl implements _OpenPdf {
   @override
   int get hashCode => Object.hash(runtimeType, file, previousState);
 
-  @JsonKey(ignore: true)
+  /// Create a copy of DashboardState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   @override
   @pragma('vm:prefer-inline')
   _$$OpenPdfImplCopyWith<_$OpenPdfImpl> get copyWith =>
@@ -657,6 +731,9 @@ class _$OpenPdfImpl implements _OpenPdf {
         alphabeticalOrderFiles,
     required TResult Function(FileMetadata file, DashboardState? previousState)
         openPdf,
+    required TResult Function(
+            List<FileMetadata> selectedFiles, List<FileMetadata> allFiles)
+        filesSelection,
     required TResult Function() notPermitted,
   }) {
     return openPdf(file, previousState);
@@ -671,6 +748,9 @@ class _$OpenPdfImpl implements _OpenPdf {
         alphabeticalOrderFiles,
     TResult? Function(FileMetadata file, DashboardState? previousState)?
         openPdf,
+    TResult? Function(
+            List<FileMetadata> selectedFiles, List<FileMetadata> allFiles)?
+        filesSelection,
     TResult? Function()? notPermitted,
   }) {
     return openPdf?.call(file, previousState);
@@ -684,6 +764,9 @@ class _$OpenPdfImpl implements _OpenPdf {
     TResult Function(List<FileMetadata> alphabeticalFiles)?
         alphabeticalOrderFiles,
     TResult Function(FileMetadata file, DashboardState? previousState)? openPdf,
+    TResult Function(
+            List<FileMetadata> selectedFiles, List<FileMetadata> allFiles)?
+        filesSelection,
     TResult Function()? notPermitted,
     required TResult orElse(),
   }) {
@@ -701,6 +784,7 @@ class _$OpenPdfImpl implements _OpenPdf {
     required TResult Function(_AlphabeticalOrderFiles value)
         alphabeticalOrderFiles,
     required TResult Function(_OpenPdf value) openPdf,
+    required TResult Function(_FilesSelection value) filesSelection,
     required TResult Function(_NotPermitted value) notPermitted,
   }) {
     return openPdf(this);
@@ -713,6 +797,7 @@ class _$OpenPdfImpl implements _OpenPdf {
     TResult? Function(_LastSeenFiles value)? lastSeenFiles,
     TResult? Function(_AlphabeticalOrderFiles value)? alphabeticalOrderFiles,
     TResult? Function(_OpenPdf value)? openPdf,
+    TResult? Function(_FilesSelection value)? filesSelection,
     TResult? Function(_NotPermitted value)? notPermitted,
   }) {
     return openPdf?.call(this);
@@ -725,6 +810,7 @@ class _$OpenPdfImpl implements _OpenPdf {
     TResult Function(_LastSeenFiles value)? lastSeenFiles,
     TResult Function(_AlphabeticalOrderFiles value)? alphabeticalOrderFiles,
     TResult Function(_OpenPdf value)? openPdf,
+    TResult Function(_FilesSelection value)? filesSelection,
     TResult Function(_NotPermitted value)? notPermitted,
     required TResult orElse(),
   }) {
@@ -742,8 +828,218 @@ abstract class _OpenPdf implements DashboardState {
 
   FileMetadata get file;
   DashboardState? get previousState;
-  @JsonKey(ignore: true)
+
+  /// Create a copy of DashboardState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
   _$$OpenPdfImplCopyWith<_$OpenPdfImpl> get copyWith =>
+      throw _privateConstructorUsedError;
+}
+
+/// @nodoc
+abstract class _$$FilesSelectionImplCopyWith<$Res> {
+  factory _$$FilesSelectionImplCopyWith(_$FilesSelectionImpl value,
+          $Res Function(_$FilesSelectionImpl) then) =
+      __$$FilesSelectionImplCopyWithImpl<$Res>;
+  @useResult
+  $Res call({List<FileMetadata> selectedFiles, List<FileMetadata> allFiles});
+}
+
+/// @nodoc
+class __$$FilesSelectionImplCopyWithImpl<$Res>
+    extends _$DashboardStateCopyWithImpl<$Res, _$FilesSelectionImpl>
+    implements _$$FilesSelectionImplCopyWith<$Res> {
+  __$$FilesSelectionImplCopyWithImpl(
+      _$FilesSelectionImpl _value, $Res Function(_$FilesSelectionImpl) _then)
+      : super(_value, _then);
+
+  /// Create a copy of DashboardState
+  /// with the given fields replaced by the non-null parameter values.
+  @pragma('vm:prefer-inline')
+  @override
+  $Res call({
+    Object? selectedFiles = null,
+    Object? allFiles = null,
+  }) {
+    return _then(_$FilesSelectionImpl(
+      selectedFiles: null == selectedFiles
+          ? _value._selectedFiles
+          : selectedFiles // ignore: cast_nullable_to_non_nullable
+              as List<FileMetadata>,
+      allFiles: null == allFiles
+          ? _value._allFiles
+          : allFiles // ignore: cast_nullable_to_non_nullable
+              as List<FileMetadata>,
+    ));
+  }
+}
+
+/// @nodoc
+
+class _$FilesSelectionImpl implements _FilesSelection {
+  const _$FilesSelectionImpl(
+      {required final List<FileMetadata> selectedFiles,
+      required final List<FileMetadata> allFiles})
+      : _selectedFiles = selectedFiles,
+        _allFiles = allFiles;
+
+  final List<FileMetadata> _selectedFiles;
+  @override
+  List<FileMetadata> get selectedFiles {
+    if (_selectedFiles is EqualUnmodifiableListView) return _selectedFiles;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_selectedFiles);
+  }
+
+  final List<FileMetadata> _allFiles;
+  @override
+  List<FileMetadata> get allFiles {
+    if (_allFiles is EqualUnmodifiableListView) return _allFiles;
+    // ignore: implicit_dynamic_type
+    return EqualUnmodifiableListView(_allFiles);
+  }
+
+  @override
+  String toString() {
+    return 'DashboardState.filesSelection(selectedFiles: $selectedFiles, allFiles: $allFiles)';
+  }
+
+  @override
+  bool operator ==(Object other) {
+    return identical(this, other) ||
+        (other.runtimeType == runtimeType &&
+            other is _$FilesSelectionImpl &&
+            const DeepCollectionEquality()
+                .equals(other._selectedFiles, _selectedFiles) &&
+            const DeepCollectionEquality().equals(other._allFiles, _allFiles));
+  }
+
+  @override
+  int get hashCode => Object.hash(
+      runtimeType,
+      const DeepCollectionEquality().hash(_selectedFiles),
+      const DeepCollectionEquality().hash(_allFiles));
+
+  /// Create a copy of DashboardState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  @override
+  @pragma('vm:prefer-inline')
+  _$$FilesSelectionImplCopyWith<_$FilesSelectionImpl> get copyWith =>
+      __$$FilesSelectionImplCopyWithImpl<_$FilesSelectionImpl>(
+          this, _$identity);
+
+  @override
+  @optionalTypeArgs
+  TResult when<TResult extends Object?>({
+    required TResult Function() loading,
+    required TResult Function(List<FileMetadata> lastSeenFiles) lastSeenFiles,
+    required TResult Function(List<FileMetadata> alphabeticalFiles)
+        alphabeticalOrderFiles,
+    required TResult Function(FileMetadata file, DashboardState? previousState)
+        openPdf,
+    required TResult Function(
+            List<FileMetadata> selectedFiles, List<FileMetadata> allFiles)
+        filesSelection,
+    required TResult Function() notPermitted,
+  }) {
+    return filesSelection(selectedFiles, allFiles);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? whenOrNull<TResult extends Object?>({
+    TResult? Function()? loading,
+    TResult? Function(List<FileMetadata> lastSeenFiles)? lastSeenFiles,
+    TResult? Function(List<FileMetadata> alphabeticalFiles)?
+        alphabeticalOrderFiles,
+    TResult? Function(FileMetadata file, DashboardState? previousState)?
+        openPdf,
+    TResult? Function(
+            List<FileMetadata> selectedFiles, List<FileMetadata> allFiles)?
+        filesSelection,
+    TResult? Function()? notPermitted,
+  }) {
+    return filesSelection?.call(selectedFiles, allFiles);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeWhen<TResult extends Object?>({
+    TResult Function()? loading,
+    TResult Function(List<FileMetadata> lastSeenFiles)? lastSeenFiles,
+    TResult Function(List<FileMetadata> alphabeticalFiles)?
+        alphabeticalOrderFiles,
+    TResult Function(FileMetadata file, DashboardState? previousState)? openPdf,
+    TResult Function(
+            List<FileMetadata> selectedFiles, List<FileMetadata> allFiles)?
+        filesSelection,
+    TResult Function()? notPermitted,
+    required TResult orElse(),
+  }) {
+    if (filesSelection != null) {
+      return filesSelection(selectedFiles, allFiles);
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult map<TResult extends Object?>({
+    required TResult Function(_Loading value) loading,
+    required TResult Function(_LastSeenFiles value) lastSeenFiles,
+    required TResult Function(_AlphabeticalOrderFiles value)
+        alphabeticalOrderFiles,
+    required TResult Function(_OpenPdf value) openPdf,
+    required TResult Function(_FilesSelection value) filesSelection,
+    required TResult Function(_NotPermitted value) notPermitted,
+  }) {
+    return filesSelection(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult? mapOrNull<TResult extends Object?>({
+    TResult? Function(_Loading value)? loading,
+    TResult? Function(_LastSeenFiles value)? lastSeenFiles,
+    TResult? Function(_AlphabeticalOrderFiles value)? alphabeticalOrderFiles,
+    TResult? Function(_OpenPdf value)? openPdf,
+    TResult? Function(_FilesSelection value)? filesSelection,
+    TResult? Function(_NotPermitted value)? notPermitted,
+  }) {
+    return filesSelection?.call(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  TResult maybeMap<TResult extends Object?>({
+    TResult Function(_Loading value)? loading,
+    TResult Function(_LastSeenFiles value)? lastSeenFiles,
+    TResult Function(_AlphabeticalOrderFiles value)? alphabeticalOrderFiles,
+    TResult Function(_OpenPdf value)? openPdf,
+    TResult Function(_FilesSelection value)? filesSelection,
+    TResult Function(_NotPermitted value)? notPermitted,
+    required TResult orElse(),
+  }) {
+    if (filesSelection != null) {
+      return filesSelection(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _FilesSelection implements DashboardState {
+  const factory _FilesSelection(
+      {required final List<FileMetadata> selectedFiles,
+      required final List<FileMetadata> allFiles}) = _$FilesSelectionImpl;
+
+  List<FileMetadata> get selectedFiles;
+  List<FileMetadata> get allFiles;
+
+  /// Create a copy of DashboardState
+  /// with the given fields replaced by the non-null parameter values.
+  @JsonKey(includeFromJson: false, includeToJson: false)
+  _$$FilesSelectionImplCopyWith<_$FilesSelectionImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
 
@@ -761,6 +1057,9 @@ class __$$NotPermittedImplCopyWithImpl<$Res>
   __$$NotPermittedImplCopyWithImpl(
       _$NotPermittedImpl _value, $Res Function(_$NotPermittedImpl) _then)
       : super(_value, _then);
+
+  /// Create a copy of DashboardState
+  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -791,6 +1090,9 @@ class _$NotPermittedImpl implements _NotPermitted {
         alphabeticalOrderFiles,
     required TResult Function(FileMetadata file, DashboardState? previousState)
         openPdf,
+    required TResult Function(
+            List<FileMetadata> selectedFiles, List<FileMetadata> allFiles)
+        filesSelection,
     required TResult Function() notPermitted,
   }) {
     return notPermitted();
@@ -805,6 +1107,9 @@ class _$NotPermittedImpl implements _NotPermitted {
         alphabeticalOrderFiles,
     TResult? Function(FileMetadata file, DashboardState? previousState)?
         openPdf,
+    TResult? Function(
+            List<FileMetadata> selectedFiles, List<FileMetadata> allFiles)?
+        filesSelection,
     TResult? Function()? notPermitted,
   }) {
     return notPermitted?.call();
@@ -818,6 +1123,9 @@ class _$NotPermittedImpl implements _NotPermitted {
     TResult Function(List<FileMetadata> alphabeticalFiles)?
         alphabeticalOrderFiles,
     TResult Function(FileMetadata file, DashboardState? previousState)? openPdf,
+    TResult Function(
+            List<FileMetadata> selectedFiles, List<FileMetadata> allFiles)?
+        filesSelection,
     TResult Function()? notPermitted,
     required TResult orElse(),
   }) {
@@ -835,6 +1143,7 @@ class _$NotPermittedImpl implements _NotPermitted {
     required TResult Function(_AlphabeticalOrderFiles value)
         alphabeticalOrderFiles,
     required TResult Function(_OpenPdf value) openPdf,
+    required TResult Function(_FilesSelection value) filesSelection,
     required TResult Function(_NotPermitted value) notPermitted,
   }) {
     return notPermitted(this);
@@ -847,6 +1156,7 @@ class _$NotPermittedImpl implements _NotPermitted {
     TResult? Function(_LastSeenFiles value)? lastSeenFiles,
     TResult? Function(_AlphabeticalOrderFiles value)? alphabeticalOrderFiles,
     TResult? Function(_OpenPdf value)? openPdf,
+    TResult? Function(_FilesSelection value)? filesSelection,
     TResult? Function(_NotPermitted value)? notPermitted,
   }) {
     return notPermitted?.call(this);
@@ -859,6 +1169,7 @@ class _$NotPermittedImpl implements _NotPermitted {
     TResult Function(_LastSeenFiles value)? lastSeenFiles,
     TResult Function(_AlphabeticalOrderFiles value)? alphabeticalOrderFiles,
     TResult Function(_OpenPdf value)? openPdf,
+    TResult Function(_FilesSelection value)? filesSelection,
     TResult Function(_NotPermitted value)? notPermitted,
     required TResult orElse(),
   }) {

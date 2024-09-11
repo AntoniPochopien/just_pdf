@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:just_pdf/dashboard/application/cubit/dashboard_cubit.dart';
+import 'package:just_pdf/dashboard/application/dashboard_cubit/dashboard_cubit.dart';
 import 'package:just_pdf/l10n/l10n.dart';
 
 class NotPermitted extends StatelessWidget {
