@@ -43,12 +43,12 @@ class _ShareDeletePrintState extends State<ShareDeletePrint>
             orElse: () => _controller.reverse(),
           );
         },
-        builder: (context, state) => state.maybeWhen(
-              orElse: () => const SizedBox(),
-              filesSelection: (selectedFiles, allFiles) => SizeTransition(
-                sizeFactor: _animation,
-                axisAlignment: 1,
-                child: Row(
+        builder: (context, state) => SizeTransition(
+              sizeFactor: _animation,
+              axisAlignment: 1,
+              child: state.maybeWhen(
+                orElse: () => const SizedBox(height: 48),
+                filesSelection: (selectedFiles, allFiles) => Row(
                     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
                       AnimatedSwitcher(

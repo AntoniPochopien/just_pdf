@@ -278,30 +278,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "0.10.1"
-  device_info_plus:
-    dependency: transitive
-    description:
-      name: device_info_plus
-      sha256: a7fd703482b391a87d60b6061d04dfdeab07826b96f9abd8f5ed98068acc0074
-      url: "https://pub.dev"
-    source: hosted
-    version: "10.1.2"
-  device_info_plus_platform_interface:
-    dependency: transitive
-    description:
-      name: device_info_plus_platform_interface
-      sha256: "282d3cf731045a2feb66abfe61bbc40870ae50a3ed10a4d3d217556c35c8c2ba"
-      url: "https://pub.dev"
-    source: hosted
-    version: "7.0.1"
-  extension:
-    dependency: transitive
-    description:
-      name: extension
-      sha256: be3a6b7f8adad2f6e2e8c63c895d19811fcf203e23466c6296267941d0ff4f24
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.6.0"
   fake_async:
     dependency: transitive
     description:
@@ -786,14 +762,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.4"
-  pdfx:
+  pdfrx:
     dependency: "direct main"
     description:
-      name: pdfx
-      sha256: f9e4f9e44bbbc4d1552d1ba07be9680c4b869e1d926dde310d58bac643dd4fe1
+      name: pdfrx
+      sha256: "995e6b841e0ebe0b04c969445005b547a8c52bc0970b74a60cc3b2669f8bec31"
       url: "https://pub.dev"
     source: hosted
-    version: "2.7.0"
+    version: "1.0.83"
   permission_handler:
     dependency: "direct main"
     description:
@@ -850,14 +826,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "6.0.2"
-  photo_view:
-    dependency: transitive
-    description:
-      name: photo_view
-      sha256: "1fc3d970a91295fbd1364296575f854c9863f225505c28c46e0a03e48960c75e"
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.15.0"
   platform:
     dependency: transitive
     description:
@@ -922,6 +890,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.0.2"
+  rxdart:
+    dependency: transitive
+    description:
+      name: rxdart
+      sha256: "5c3004a4a8dbb94bd4bf5412a4def4acdaa12e12f269737a5751369e12d1a962"
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.28.0"
   share_plus:
     dependency: "direct main"
     description:
@@ -1071,14 +1047,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.2.2"
-  universal_platform:
-    dependency: transitive
-    description:
-      name: universal_platform
-      sha256: "64e16458a0ea9b99260ceb5467a214c1f298d647c659af1bff6d3bf82536b1ec"
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.1.0"
   url_launcher:
     dependency: "direct main"
     description:
@@ -1207,14 +1175,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "5.5.4"
-  win32_registry:
-    dependency: transitive
-    description:
-      name: win32_registry
-      sha256: "723b7f851e5724c55409bb3d5a32b203b3afe8587eaf5dafb93a5fed8ecda0d6"
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.1.4"
   xdg_directories:
     dependency: transitive
     description:

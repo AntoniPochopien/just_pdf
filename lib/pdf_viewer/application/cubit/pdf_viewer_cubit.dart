@@ -18,9 +18,9 @@ class PdfViewerCubit extends Cubit<PdfViewerState> {
   void share(FileMetadata fileMetadata) async =>
       await printingRepository.share([fileMetadata]);
 
-  void uriLaunch(String? url) async {
-    if (url != null) {
-      await launchUrl(Uri.parse(url), mode: LaunchMode.externalApplication);
+  void uriLaunch(Uri? uri) async {
+    if (uri != null) {
+      await launchUrl(uri, mode: LaunchMode.externalApplication);
     }
   }
 }
