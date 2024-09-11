@@ -1,12 +1,12 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_pdfview/flutter_pdfview.dart';
 import 'package:just_pdf/common/widgets/just_pdf_app_bar.dart';
 import 'package:just_pdf/dashboard/domain/file_metadata.dart';
 import 'package:just_pdf/di.dart';
 import 'package:just_pdf/pdf_viewer/application/cubit/pdf_viewer_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:just_pdf/printing/domain/i_printing_repository.dart';
+import 'package:pdfx/pdfx.dart';
 
 @RoutePage()
 class PdfViewerScreen extends StatefulWidget {
@@ -18,8 +18,23 @@ class PdfViewerScreen extends StatefulWidget {
 }
 
 class _PdfViewerScreenState extends State<PdfViewerScreen> {
+  late final PdfControllerPinch _pdfPinchController;
   int? _pagesCount;
-  int _currentPage = 0;
+  int _currentPage = 1;
+
+  @override
+  void initState() {
+    super.initState();
+    _pdfPinchController = PdfControllerPinch(
+      document: PdfDocument.openFile(widget.fileMetadata.filePath),
+    );
+  }
+
+  @override
+  void dispose() {
+    _pdfPinchController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -40,19 +55,31 @@ class _PdfViewerScreenState extends State<PdfViewerScreen> {
                 onPressed: () =>
                     context.read<PdfViewerCubit>().share(widget.fileMetadata),
               ),
-              if (_pagesCount != null) Text('${_currentPage + 1}/$_pagesCount')
+              Text('$_currentPage/$_pagesCount')
             ],
           ),
-          body: PDFView(
-            filePath: widget.fileMetadata.filePath,
-            onLinkHandler: (url) =>
-                context.read<PdfViewerCubit>().uriLaunch(url),
-            onPageChanged: (page, total) {
+          body: PdfViewPinch(
+            controller: _pdfPinchController,
+            scrollDirection: Axis.vertical,
+            onDocumentLoaded: (document) {
               setState(() {
-                _currentPage = page!;
-                _pagesCount = total;
+                _pagesCount = document.pagesCount;
               });
             },
+            onPageChanged: (page) {
+              setState(() {
+                _currentPage = page;
+              });
+            },
+            // filePath: widget.fileMetadata.filePath,
+            // onLinkHandler: (url) =>
+            //     context.read<PdfViewerCubit>().uriLaunch(url),
+            // onPageChanged: (page, total) {
+            //   setState(() {
+            //     _currentPage = page!;
+            //     _pagesCount = total;
+            //   });
+            // },
           ),
         ),
       ),
