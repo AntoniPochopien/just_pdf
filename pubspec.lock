@@ -424,6 +424,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.4.1"
+  flutter_pdfview:
+    dependency: "direct main"
+    description:
+      name: flutter_pdfview
+      sha256: "6b625b32a9102780236554dff42f2d798b4627704ab4a3153c07f2134a52b697"
+      url: "https://pub.dev"
+    source: hosted
+    version: "1.3.3"
   flutter_plugin_android_lifecycle:
     dependency: transitive
     description:
@@ -762,14 +770,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.0.4"
-  pdfrx:
-    dependency: "direct main"
-    description:
-      name: pdfrx
-      sha256: "995e6b841e0ebe0b04c969445005b547a8c52bc0970b74a60cc3b2669f8bec31"
-      url: "https://pub.dev"
-    source: hosted
-    version: "1.0.83"
   permission_handler:
     dependency: "direct main"
     description:
@@ -890,14 +890,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "3.0.2"
-  rxdart:
-    dependency: transitive
-    description:
-      name: rxdart
-      sha256: "5c3004a4a8dbb94bd4bf5412a4def4acdaa12e12f269737a5751369e12d1a962"
-      url: "https://pub.dev"
-    source: hosted
-    version: "0.28.0"
   share_plus:
     dependency: "direct main"
     description:
@@ -999,14 +991,6 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "1.2.0"
-  synchronized:
-    dependency: transitive
-    description:
-      name: synchronized
-      sha256: a824e842b8a054f91a728b783c177c1e4731f6b124f9192468457a8913371255
-      url: "https://pub.dev"
-    source: hosted
-    version: "3.2.0"
   term_glyph:
     dependency: transitive
     description:

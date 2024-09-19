@@ -1,12 +1,12 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_pdfview/flutter_pdfview.dart';
 import 'package:just_pdf/common/widgets/just_pdf_app_bar.dart';
 import 'package:just_pdf/dashboard/domain/file_metadata.dart';
 import 'package:just_pdf/di.dart';
 import 'package:just_pdf/pdf_viewer/application/cubit/pdf_viewer_cubit.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:just_pdf/printing/domain/i_printing_repository.dart';
-import 'package:pdfrx/pdfrx.dart';
 
 @RoutePage()
 class PdfViewerScreen extends StatefulWidget {
@@ -19,7 +19,7 @@ class PdfViewerScreen extends StatefulWidget {
 
 class _PdfViewerScreenState extends State<PdfViewerScreen> {
   int? _pagesCount;
-  int _currentPage = 1;
+  int _currentPage = 0;
 
   @override
   Widget build(BuildContext context) {
@@ -44,32 +44,18 @@ class _PdfViewerScreenState extends State<PdfViewerScreen> {
                           .read<PdfViewerCubit>()
                           .share(widget.fileMetadata),
                     ),
-                    Text('$_currentPage/$_pagesCount')
+                    if (_pagesCount != null)
+                      Text('${_currentPage + 1}/$_pagesCount')
                   ])
               ],
             ),
-            body: PdfViewer.file(
-              widget.fileMetadata.filePath,
-              params: PdfViewerParams(
-                  backgroundColor: Colors.white,
-                  calculateInitialPageNumber: (document, controller) {
-                    if (_pagesCount == null) {
-                      setState(() {
-                        _pagesCount = document.pages.length;
-                      });
-                    }
-                    return 0;
-                  },
-                  enableTextSelection: true,
-                  onPageChanged: (pageNumber) {
-                    setState(() {
-                      _currentPage = pageNumber ?? 0;
-                    });
-                  },
-                  linkHandlerParams: PdfLinkHandlerParams(
-                      onLinkTap: (url) =>
-                          context.read<PdfViewerCubit>().uriLaunch(url.url))),
-            )),
+            body: PDFView(
+                filePath: widget.fileMetadata.filePath,
+                onLinkHandler: (url) =>
+                    context.read<PdfViewerCubit>().uriLaunch(url),
+                onRender: (pages) => setState(() => _pagesCount = pages),
+                onPageChanged: (page, total) =>
+                    setState(() => _currentPage = page!))),
       ),
     );
   }
