@@ -34,12 +34,14 @@ class PdfViewerRoute extends PageRouteInfo<PdfViewerRouteArgs> {
   PdfViewerRoute({
     Key? key,
     required FileMetadata fileMetadata,
+    required DashboardCubit dashboardCubit,
     List<PageRouteInfo>? children,
   }) : super(
           PdfViewerRoute.name,
           args: PdfViewerRouteArgs(
             key: key,
             fileMetadata: fileMetadata,
+            dashboardCubit: dashboardCubit,
           ),
           initialChildren: children,
         );
@@ -53,6 +55,7 @@ class PdfViewerRoute extends PageRouteInfo<PdfViewerRouteArgs> {
       return PdfViewerScreen(
         key: args.key,
         fileMetadata: args.fileMetadata,
+        dashboardCubit: args.dashboardCubit,
       );
     },
   );
@@ -62,14 +65,17 @@ class PdfViewerRouteArgs {
   const PdfViewerRouteArgs({
     this.key,
     required this.fileMetadata,
+    required this.dashboardCubit,
   });
 
   final Key? key;
 
   final FileMetadata fileMetadata;
 
+  final DashboardCubit dashboardCubit;
+
   @override
   String toString() {
-    return 'PdfViewerRouteArgs{key: $key, fileMetadata: $fileMetadata}';
+    return 'PdfViewerRouteArgs{key: $key, fileMetadata: $fileMetadata, dashboardCubit: $dashboardCubit}';
   }
 }

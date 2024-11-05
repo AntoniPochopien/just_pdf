@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:flutter/material.dart';
+import 'package:just_pdf/dashboard/application/dashboard_cubit/dashboard_cubit.dart';
 import 'package:just_pdf/dashboard/domain/file_metadata.dart';
 import 'package:just_pdf/dashboard/presentation/dashboard_screen.dart';
 import 'package:just_pdf/pdf_viewer/pdf_viewer_screen.dart';

@@ -8,5 +8,7 @@
     "size":"Rozmiar",
     "no_access_to_external_memory":"Brak dostępu do pamięci zewnętrznej urządzenia.",
     "give_permission":"Udziel zgody",
-    "favorite":"Ulubione"
+    "favorite":"Ulubione",
+    "print":"Drukuj",
+    "share":"Udostępnij"
 }

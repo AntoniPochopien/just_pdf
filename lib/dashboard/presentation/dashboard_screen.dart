@@ -31,8 +31,10 @@ class DashboardScreen extends StatelessWidget {
       child: BlocListener<DashboardCubit, DashboardState>(
         listener: (context, state) {
           state.whenOrNull(
-              openPdf: (openPdf, _) =>
-                  context.pushRoute(PdfViewerRoute(fileMetadata: openPdf)));
+              openPdf: (openPdf, _) => context.pushRoute(PdfViewerRoute(
+                    fileMetadata: openPdf,
+                    dashboardCubit: context.read<DashboardCubit>(),
+                  )));
         },
         child: BlocBuilder<DashboardCubit, DashboardState>(
           builder: (context, state) => RouteAwareWrapper(

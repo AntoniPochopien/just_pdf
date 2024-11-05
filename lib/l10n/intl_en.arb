@@ -8,5 +8,7 @@
     "size":"Size",
     "no_access_to_external_memory":"No access to the device's external memory.",
     "give_permission":"Give permission",
-    "favorite":"Favorite"
+    "favorite":"Favorite",
+    "print":"Print",
+    "share":"Share"
 }

@@ -10,22 +10,27 @@ class OptionPills extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocBuilder<DashboardCubit, DashboardState>(
-      builder: (context, state) => SingleChildScrollView(
-        child: Row(
-            children: Options.values
-                .map((e) => OptionPill(
-                    onTap: () => e.onTap(context),
-                    selected: state.maybeWhen(
-                      lastSeenFiles: (_) =>
-                          Options.lastSeen == e ? true : false,
-                      alphabeticalOrderFiles: (_) =>
-                          Options.alphabeticalOrder == e ? true : false,
-                      favoriteFiles: (_) =>
-                          Options.favorite == e ? true : false,
-                      orElse: () => false,
-                    ),
-                    text: e.getTitle(context)))
-                .toList()),
+      builder: (context, state) => Align(
+        alignment: Alignment.centerLeft,
+        child: SingleChildScrollView(
+          scrollDirection: Axis.horizontal,
+          child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: Options.values
+                  .map((e) => OptionPill(
+                      onTap: () => e.onTap(context),
+                      selected: state.maybeWhen(
+                        lastSeenFiles: (_) =>
+                            Options.lastSeen == e ? true : false,
+                        alphabeticalOrderFiles: (_) =>
+                            Options.alphabeticalOrder == e ? true : false,
+                        favoriteFiles: (_) =>
+                            Options.favorite == e ? true : false,
+                        orElse: () => false,
+                      ),
+                      text: e.getTitle(context)))
+                  .toList()),
+        ),
       ),
     );
   }
