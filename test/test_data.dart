@@ -9,12 +9,14 @@ String _generateRandomPath(int index) {
   return '${randomLetters(10)}/${randomLetters(10)}';
 }
 
-final dashboardDataFiles = List<FileMetadata>.generate(100, (index) {
+final mockedFiles = List<FileMetadata>.generate(100, (index) {
   final lastViewed = DateTime.now().subtract(Duration(days: index));
   return FileMetadata(
-      id: index.toString(),
-      filePath: _generateRandomPath(index),
-      lastViewed: lastViewed,
-      sizeInBytes: index + 1);
+    id: index.toString(),
+    filePath: _generateRandomPath(index),
+    lastViewed: lastViewed,
+    sizeInBytes: index + 1,
+    favorite: index % 2 == 0,
+  );
 })
   ..shuffle();
