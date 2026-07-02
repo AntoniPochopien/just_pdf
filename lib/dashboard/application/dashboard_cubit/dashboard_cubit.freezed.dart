@@ -114,9 +114,6 @@ class _$DashboardStateCopyWithImpl<$Res, $Val extends DashboardState>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-
-  /// Create a copy of DashboardState
-  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -133,9 +130,6 @@ class __$$LoadingImplCopyWithImpl<$Res>
   __$$LoadingImplCopyWithImpl(
       _$LoadingImpl _value, $Res Function(_$LoadingImpl) _then)
       : super(_value, _then);
-
-  /// Create a copy of DashboardState
-  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -283,8 +277,6 @@ class __$$LastSeenFilesImplCopyWithImpl<$Res>
       _$LastSeenFilesImpl _value, $Res Function(_$LastSeenFilesImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of DashboardState
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -332,9 +324,7 @@ class _$LastSeenFilesImpl implements _LastSeenFiles {
   int get hashCode => Object.hash(
       runtimeType, const DeepCollectionEquality().hash(_lastSeenFiles));
 
-  /// Create a copy of DashboardState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$LastSeenFilesImplCopyWith<_$LastSeenFilesImpl> get copyWith =>
@@ -450,10 +440,7 @@ abstract class _LastSeenFiles implements DashboardState {
       _$LastSeenFilesImpl;
 
   List<FileMetadata> get lastSeenFiles;
-
-  /// Create a copy of DashboardState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$LastSeenFilesImplCopyWith<_$LastSeenFilesImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -477,8 +464,6 @@ class __$$AlphabeticalOrderFilesImplCopyWithImpl<$Res>
       $Res Function(_$AlphabeticalOrderFilesImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of DashboardState
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -528,9 +513,7 @@ class _$AlphabeticalOrderFilesImpl implements _AlphabeticalOrderFiles {
   int get hashCode => Object.hash(
       runtimeType, const DeepCollectionEquality().hash(_alphabeticalFiles));
 
-  /// Create a copy of DashboardState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$AlphabeticalOrderFilesImplCopyWith<_$AlphabeticalOrderFilesImpl>
@@ -648,10 +631,7 @@ abstract class _AlphabeticalOrderFiles implements DashboardState {
       _$AlphabeticalOrderFilesImpl;
 
   List<FileMetadata> get alphabeticalFiles;
-
-  /// Create a copy of DashboardState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$AlphabeticalOrderFilesImplCopyWith<_$AlphabeticalOrderFilesImpl>
       get copyWith => throw _privateConstructorUsedError;
 }
@@ -673,8 +653,6 @@ class __$$FavoriteFilesImplCopyWithImpl<$Res>
       _$FavoriteFilesImpl _value, $Res Function(_$FavoriteFilesImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of DashboardState
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -722,9 +700,7 @@ class _$FavoriteFilesImpl implements _FavoriteFiles {
   int get hashCode => Object.hash(
       runtimeType, const DeepCollectionEquality().hash(_favoriteFiles));
 
-  /// Create a copy of DashboardState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$FavoriteFilesImplCopyWith<_$FavoriteFilesImpl> get copyWith =>
@@ -840,10 +816,7 @@ abstract class _FavoriteFiles implements DashboardState {
       _$FavoriteFilesImpl;
 
   List<FileMetadata> get favoriteFiles;
-
-  /// Create a copy of DashboardState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$FavoriteFilesImplCopyWith<_$FavoriteFilesImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -867,8 +840,6 @@ class __$$OpenPdfImplCopyWithImpl<$Res>
       _$OpenPdfImpl _value, $Res Function(_$OpenPdfImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of DashboardState
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -887,8 +858,6 @@ class __$$OpenPdfImplCopyWithImpl<$Res>
     ));
   }
 
-  /// Create a copy of DashboardState
-  /// with the given fields replaced by the non-null parameter values.
   @override
   @pragma('vm:prefer-inline')
   $DashboardStateCopyWith<$Res>? get previousState {
@@ -930,9 +899,7 @@ class _$OpenPdfImpl implements _OpenPdf {
   @override
   int get hashCode => Object.hash(runtimeType, file, previousState);
 
-  /// Create a copy of DashboardState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$OpenPdfImplCopyWith<_$OpenPdfImpl> get copyWith =>
@@ -1050,10 +1017,7 @@ abstract class _OpenPdf implements DashboardState {
 
   FileMetadata get file;
   DashboardState? get previousState;
-
-  /// Create a copy of DashboardState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$OpenPdfImplCopyWith<_$OpenPdfImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1075,8 +1039,6 @@ class __$$FilesSelectionImplCopyWithImpl<$Res>
       _$FilesSelectionImpl _value, $Res Function(_$FilesSelectionImpl) _then)
       : super(_value, _then);
 
-  /// Create a copy of DashboardState
-  /// with the given fields replaced by the non-null parameter values.
   @pragma('vm:prefer-inline')
   @override
   $Res call({
@@ -1142,9 +1104,7 @@ class _$FilesSelectionImpl implements _FilesSelection {
       const DeepCollectionEquality().hash(_selectedFiles),
       const DeepCollectionEquality().hash(_allFiles));
 
-  /// Create a copy of DashboardState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   @override
   @pragma('vm:prefer-inline')
   _$$FilesSelectionImplCopyWith<_$FilesSelectionImpl> get copyWith =>
@@ -1263,10 +1223,7 @@ abstract class _FilesSelection implements DashboardState {
 
   List<FileMetadata> get selectedFiles;
   List<FileMetadata> get allFiles;
-
-  /// Create a copy of DashboardState
-  /// with the given fields replaced by the non-null parameter values.
-  @JsonKey(includeFromJson: false, includeToJson: false)
+  @JsonKey(ignore: true)
   _$$FilesSelectionImplCopyWith<_$FilesSelectionImpl> get copyWith =>
       throw _privateConstructorUsedError;
 }
@@ -1285,9 +1242,6 @@ class __$$NotPermittedImplCopyWithImpl<$Res>
   __$$NotPermittedImplCopyWithImpl(
       _$NotPermittedImpl _value, $Res Function(_$NotPermittedImpl) _then)
       : super(_value, _then);
-
-  /// Create a copy of DashboardState
-  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc

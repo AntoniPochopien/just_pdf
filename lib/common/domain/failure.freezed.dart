@@ -65,9 +65,6 @@ class _$FailureCopyWithImpl<$Res, $Val extends Failure>
   final $Val _value;
   // ignore: unused_field
   final $Res Function($Val) _then;
-
-  /// Create a copy of Failure
-  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
@@ -84,9 +81,6 @@ class __$$UnexpectedImplCopyWithImpl<$Res>
   __$$UnexpectedImplCopyWithImpl(
       _$UnexpectedImpl _value, $Res Function(_$UnexpectedImpl) _then)
       : super(_value, _then);
-
-  /// Create a copy of Failure
-  /// with the given fields replaced by the non-null parameter values.
 }
 
 /// @nodoc
